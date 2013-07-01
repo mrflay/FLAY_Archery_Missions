@@ -1,0 +1,1040 @@
+version=12;
+class Mission
+{
+	addOns[]=
+	{
+		"A3_Characters_F_Civil",
+		"a3_map_stratis",
+		"FLAY_Archery",
+		"A3_Weapons_F_Ammoboxes",
+		"A3_Characters_F_BLUFOR",
+		"A3_Structures_F_Training",
+		"a3_signs_f",
+		"A3_Soft_F_MRAP_02",
+		"A3_Soft_F_TruckHeavy",
+		"A3_Characters_F_OPFOR",
+		"A3_Boat_F_Boat_Armed_01",
+		"A3_Boat_F_Boat_Transport_01",
+		"A3_Air_F_Heli_Light_02",
+		"A3_Characters_F_INDEP"
+	};
+	addOnsAuto[]=
+	{
+		"A3_Characters_F_BLUFOR",
+		"A3_Characters_F_INDEP",
+		"A3_Characters_F_Civil",
+		"A3_Soft_F_MRAP_02",
+		"A3_Soft_F_TruckHeavy",
+		"A3_Characters_F_OPFOR",
+		"A3_Boat_F_Boat_Armed_01",
+		"A3_Boat_F_Boat_Transport_01",
+		"A3_Air_F_Heli_Light_02",
+		"FLAY_Archery",
+		"A3_Weapons_F_Ammoboxes",
+		"A3_Structures_F_Training",
+		"a3_signs_f",
+		"a3_map_stratis"
+	};
+	randomSeed=13050417;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=7;
+		day=6;
+		hour=14;
+		minute=15;
+		startFogBase=0.001;
+		forecastFogBase=0.001;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+	class Groups
+	{
+		items=16;
+		class Item0
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=3;
+				class Item0
+				{
+					presence=0;
+					position[]={6586.5601,80.780952,5191.1357};
+					id=0;
+					side="WEST";
+					vehicle="B_Soldier_F";
+					leader=1;
+					skill=0.60000002;
+					init="removeallweapons this; this addbackpack ""b_assaultpack_blk""; this addweapon ""flay_compoundbow""; this addmagazine ""flay_1rnd_arrow""; this addmagazine ""flay_1rnd_arrow""; this addmagazine ""flay_1rnd_arrow""; this additem ""flay_point_broadhead""; this additem ""flay_point_broadhead""; this additem ""flay_point_broadhead""; this additem ""flay_point_explosive""; this additem ""flay_point_explosive""; this additem ""flay_point_explosive""; this additem ""flay_acc_quiver_7""; this additem ""flay_acc_quiver_7he""; this addprimaryweaponitem ""flay_acc_quiver_7b""; this addprimaryweaponitem ""optic_aco"";";
+				};
+				class Item1
+				{
+					position[]={6585.1992,80.640518,5188.5542};
+					azimut=92.184204;
+					id=1;
+					side="GUER";
+					vehicle="I_soldier_F";
+					skill=0.60000002;
+					init="removeallweapons this;";
+				};
+				class Item2
+				{
+					position[]={6584.9648,80.592857,5187.7529};
+					azimut=105.278;
+					id=2;
+					side="CIV";
+					vehicle="C_man_polo_2_F";
+					player="PLAYER COMMANDER";
+					skill=0.60000002;
+					init="this addbackpack ""b_assaultpack_blk""; this addweapon ""flay_compoundbow""; this addmagazine ""flay_1rnd_arrow""; this addmagazine ""flay_1rnd_arrow""; this addmagazine ""flay_1rnd_arrow""; this additem ""flay_point_broadhead""; this additem ""flay_point_broadhead""; this additem ""flay_point_broadhead""; this additem ""flay_point_explosive""; this additem ""flay_point_explosive""; this additem ""flay_point_explosive""; this additem ""flay_acc_quiver_7""; this additem ""flay_acc_quiver_7he""; this addprimaryweaponitem ""flay_acc_quiver_7b""; this addprimaryweaponitem ""optic_aco"";";
+				};
+			};
+			class Waypoints
+			{
+				items=6;
+				class Item0
+				{
+					position[]={6607.2744,80.893944,5188.3848};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item1
+				{
+					position[]={6604.8931,79.479561,5178.0664};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item2
+				{
+					position[]={6573.2466,59.275051,5089.0015};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item3
+				{
+					position[]={6542.6274,42.343597,5030.1816};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item4
+				{
+					position[]={6516.5737,33.265896,5017.6514};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item5
+				{
+					position[]={6477.8296,15.502899,4977.2539};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
+		};
+		class Item1
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6500.188,4.6550775,4928.1382};
+					azimut=460.6062;
+					id=3;
+					side="EAST";
+					vehicle="O_MRAP_02_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item2
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6502.2407,7.4475989,4945.1787};
+					azimut=317.61002;
+					id=4;
+					side="EAST";
+					vehicle="O_Truck_02_transport_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item3
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6498.6294,4.7930088,4922.3711};
+					azimut=817.20941;
+					id=5;
+					side="EAST";
+					vehicle="O_Truck_02_covered_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item4
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6522.2627,4.6718993,4937.4941};
+					azimut=530.54218;
+					id=6;
+					side="EAST";
+					vehicle="O_Soldier_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item5
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6524.1064,4.4404225,4936.8887};
+					azimut=590.93201;
+					id=7;
+					side="EAST";
+					vehicle="O_Soldier_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item6
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6538.0405,4.391819,4929.0464};
+					azimut=590.93201;
+					id=8;
+					side="EAST";
+					vehicle="O_Soldier_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item7
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6503.8525,5.1543093,4933.4199};
+					azimut=493.60446;
+					id=9;
+					side="EAST";
+					vehicle="O_Soldier_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item8
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6505.4707,5.054585,4934.0332};
+					azimut=522.74457;
+					id=10;
+					side="EAST";
+					vehicle="O_Soldier_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item9
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6505.3389,4.6882372,4932.1577};
+					azimut=706.66895;
+					id=11;
+					side="EAST";
+					vehicle="O_Soldier_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item10
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6521.0454,1.8867066,4922.4253};
+					azimut=488.03458;
+					id=12;
+					side="EAST";
+					vehicle="O_Soldier_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item11
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6492.1104,5.6944251,4925.5869};
+					azimut=173.35297;
+					id=13;
+					side="EAST";
+					vehicle="O_Soldier_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item12
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6554.3354,0,4726.6855};
+					azimut=399.78238;
+					id=14;
+					side="EAST";
+					vehicle="O_Boat_Armed_01_hmg_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+			class Waypoints
+			{
+				items=4;
+				class Item0
+				{
+					position[]={6558.7144,0.082899027,4732.4907};
+					synchronizations[]={3};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+					syncId=0;
+				};
+				class Item1
+				{
+					position[]={6589.5249,22.451008,4986.2544};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item2
+				{
+					position[]={6534.1646,17.08231,4979.8438};
+					type="GETOUT";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item3
+				{
+					position[]={6511.877,37.365723,5080.6406};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
+		};
+		class Item13
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6640.5088,-0.078043506,4881.6533};
+					azimut=590.93201;
+					id=15;
+					side="EAST";
+					vehicle="O_Boat_Transport_01_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+			class Waypoints
+			{
+				items=4;
+				class Item0
+				{
+					position[]={6635.2197,0.024814211,4879.8623};
+					synchronizations[]={3};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+					syncId=1;
+				};
+				class Item1
+				{
+					position[]={6515.8003,0,4890.7373};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item2
+				{
+					position[]={6505.8633,3.905669,4905.2173};
+					type="GETOUT";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item3
+				{
+					position[]={6477.1885,13.022749,4962.2842};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
+		};
+		class Item14
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6643.644,-0.17033085,4879.4868};
+					azimut=590.93201;
+					id=16;
+					side="EAST";
+					vehicle="O_Boat_Transport_01_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+			class Waypoints
+			{
+				items=4;
+				class Item0
+				{
+					position[]={6639.4756,-0.082675479,4876.5693};
+					synchronizations[]={3};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+					syncId=2;
+				};
+				class Item1
+				{
+					position[]={6526.873,0,4882.2207};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item2
+				{
+					position[]={6512.1094,1.8959228,4910.6113};
+					type="GETOUT";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item3
+				{
+					position[]={6485.9897,11.28122,4957.7412};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
+		};
+		class Item15
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6578.7573,0.032291036,4781.8911};
+					azimut=671.23499;
+					special="FLY";
+					id=17;
+					side="EAST";
+					vehicle="O_Heli_Light_02_F";
+					leader=1;
+					skill=0.60000002;
+					text="heli";
+					init="this setposasl [getpos this select 0, getpos this select 1, -10]; this enablesimulation false;";
+				};
+			};
+			class Waypoints
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6484.5796,8.119318,4938.3696};
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
+		};
+	};
+	class Vehicles
+	{
+		items=35;
+		class Item0
+		{
+			position[]={6610.6089,80.727226,5187.689};
+			azimut=179.93785;
+			id=18;
+			side="EMPTY";
+			vehicle="FLAY_Target_FITA_122";
+			skill=0.60000002;
+		};
+		class Item1
+		{
+			position[]={6589.7554,80.789352,5188.1885};
+			id=19;
+			side="EMPTY";
+			vehicle="Box_NATO_Ammo_F";
+			skill=0.60000002;
+			init="clearWeaponCargo this; clearMagazineCargo this; clearItemCargo this; this addBackpackCargo [""b_assaultpack_blk"",3];  this addWeaponCargo [""flay_compoundbow"", 10]; this addWeaponCargo [""flay_recurvebow"", 10]; this addMagazineCargo [""flay_1rnd_arrow"", 50]; this addMagazineCargo [""flay_1rnd_broadheadarrow"", 50]; this addMagazineCargo [""flay_1rnd_explosivearrow"", 50]; this addMagazineCargo [""flay_1rnd_precisionarrow"", 50]; this addItemCargo [""flay_point_broadhead"",50]; this addItemCargo [""flay_point_precision"",50]; this addItemCargo [""flay_point_explosive"",50]; this addItemCargo [""flay_acc_quiver_7"",10]; this addItemCargo [""flay_acc_quiver_7b"",10]; this addItemCargo [""flay_acc_quiver_7he"",10]; this addItemCargo [""flay_acc_quiver_7p"",10]; this addItemCargo [""flay_acc_stabilizer"", 10]; this addItemCargo [""acc_flashlight"", 10]; this addItemCargo [""acc_pointer_ir"", 10]; this addItemCargo [""optic_aco"", 10]; this addItemCargo [""optic_arco"", 10]; this addItemCargo [""optic_holosight"", 10];";
+		};
+		class Item2
+		{
+			position[]={6610.6079,80.772713,5189.8667};
+			azimut=89.779655;
+			id=20;
+			side="EMPTY";
+			vehicle="TargetP_Inf_F";
+			skill=0.60000002;
+			init="nopop=true";
+		};
+		class Item3
+		{
+			position[]={6604.7876,79.053047,5175.9502};
+			id=21;
+			side="EMPTY";
+			vehicle="Pole_F";
+			skill=0.60000002;
+			init="this setvectorup [0,0,1]; this enablesimulation false;";
+		};
+		class Item4
+		{
+			position[]={6609.1265,80.639328,5185.7397};
+			azimut=89.730003;
+			id=22;
+			side="EMPTY";
+			vehicle="ArrowMarker_R_F";
+			skill=0.60000002;
+			init="this setvectorup [0,0,1]; this enablesimulation false;";
+		};
+		class Item5
+		{
+			position[]={6588.8311,61.217216,5105.2813};
+			azimut=275.11255;
+			id=23;
+			side="EMPTY";
+			vehicle="FLAY_Target_FITA_122";
+			skill=0.60000002;
+		};
+		class Item6
+		{
+			position[]={6585.4634,62.227009,5114.354};
+			azimut=193.98529;
+			id=24;
+			side="EMPTY";
+			vehicle="TargetP_Inf_F";
+			skill=0.60000002;
+			init="nopop=true";
+		};
+		class Item7
+		{
+			position[]={6577.9888,60.979397,5100.4302};
+			azimut=200.22073;
+			id=25;
+			side="EMPTY";
+			vehicle="TargetP_Inf_F";
+			skill=0.60000002;
+			init="nopop=true";
+		};
+		class Item8
+		{
+			position[]={6593.9741,63.625412,5128.9282};
+			azimut=190.53038;
+			id=26;
+			side="EMPTY";
+			vehicle="TargetP_Inf_F";
+			skill=0.60000002;
+			init="nopop=true";
+		};
+		class Item9
+		{
+			position[]={6605.8384,79.239838,5176.4697};
+			azimut=-90.722916;
+			id=27;
+			side="EMPTY";
+			vehicle="Box_NATO_Ammo_F";
+			skill=0.60000002;
+			init="clearWeaponCargo this; clearMagazineCargo this; clearItemCargo this; this addBackpackCargo [""b_assaultpack_blk"",3];  this addWeaponCargo [""flay_compoundbow"", 10]; this addWeaponCargo [""flay_recurvebow"", 10]; this addMagazineCargo [""flay_1rnd_arrow"", 50]; this addMagazineCargo [""flay_1rnd_broadheadarrow"", 50]; this addMagazineCargo [""flay_1rnd_explosivearrow"", 50]; this addMagazineCargo [""flay_1rnd_precisionarrow"", 50]; this addItemCargo [""flay_point_broadhead"",50]; this addItemCargo [""flay_point_precision"",50]; this addItemCargo [""flay_point_explosive"",50]; this addItemCargo [""flay_acc_quiver_7"",10]; this addItemCargo [""flay_acc_quiver_7b"",10]; this addItemCargo [""flay_acc_quiver_7he"",10]; this addItemCargo [""flay_acc_quiver_7p"",10]; this addItemCargo [""flay_acc_stabilizer"", 10]; this addItemCargo [""acc_flashlight"", 10]; this addItemCargo [""acc_pointer_ir"", 10]; this addItemCargo [""optic_aco"", 10]; this addItemCargo [""optic_arco"", 10]; this addItemCargo [""optic_holosight"", 10];";
+		};
+		class Item10
+		{
+			position[]={6589.5298,80.75209,5187.0498};
+			id=28;
+			side="EMPTY";
+			vehicle="Pole_F";
+			skill=0.60000002;
+			init="this setvectorup [0,0,1]; this enablesimulation false;";
+		};
+		class Item11
+		{
+			position[]={6574.5894,58.668365,5086.7349};
+			id=29;
+			side="EMPTY";
+			vehicle="Pole_F";
+			skill=0.60000002;
+			init="this setvectorup [0,0,1]; this enablesimulation false;";
+		};
+		class Item12
+		{
+			position[]={6575.6401,58.948433,5087.2544};
+			azimut=-90.722916;
+			id=30;
+			side="EMPTY";
+			vehicle="Box_NATO_Ammo_F";
+			skill=0.60000002;
+			init="clearWeaponCargo this; clearMagazineCargo this; clearItemCargo this; this addBackpackCargo [""b_assaultpack_blk"",3];  this addWeaponCargo [""flay_compoundbow"", 10]; this addWeaponCargo [""flay_recurvebow"", 10]; this addMagazineCargo [""flay_1rnd_arrow"", 50]; this addMagazineCargo [""flay_1rnd_broadheadarrow"", 50]; this addMagazineCargo [""flay_1rnd_explosivearrow"", 50]; this addMagazineCargo [""flay_1rnd_precisionarrow"", 50]; this addItemCargo [""flay_point_broadhead"",50]; this addItemCargo [""flay_point_precision"",50]; this addItemCargo [""flay_point_explosive"",50]; this addItemCargo [""flay_acc_quiver_7"",10]; this addItemCargo [""flay_acc_quiver_7b"",10]; this addItemCargo [""flay_acc_quiver_7he"",10]; this addItemCargo [""flay_acc_quiver_7p"",10]; this addItemCargo [""flay_acc_stabilizer"", 10]; this addItemCargo [""acc_flashlight"", 10]; this addItemCargo [""acc_pointer_ir"", 10]; this addItemCargo [""optic_aco"", 10]; this addItemCargo [""optic_arco"", 10]; this addItemCargo [""optic_holosight"", 10];";
+		};
+		class Item13
+		{
+			position[]={6586.9741,61.165485,5104.6118};
+			azimut=-180.20358;
+			id=31;
+			side="EMPTY";
+			vehicle="ArrowMarker_R_F";
+			skill=0.60000002;
+			init="this setvectorup [0,0,1]; this enablesimulation false;";
+		};
+		class Item14
+		{
+			position[]={6567.0317,49.264111,5058.4097};
+			azimut=200.22073;
+			id=32;
+			side="EMPTY";
+			vehicle="TargetP_Inf_F";
+			skill=0.60000002;
+			init="nopop=true";
+		};
+		class Item15
+		{
+			position[]={6560.7036,48.720074,5058.5688};
+			azimut=215.54057;
+			id=33;
+			side="EMPTY";
+			vehicle="TargetP_Inf_F";
+			skill=0.60000002;
+			init="nopop=true";
+		};
+		class Item16
+		{
+			position[]={6543.0342,48.107567,5059.3281};
+			azimut=222.24191;
+			id=34;
+			side="EMPTY";
+			vehicle="TargetP_Inf_F";
+			skill=0.60000002;
+			init="nopop=true";
+		};
+		class Item17
+		{
+			position[]={6545.9751,47.224297,5050.5425};
+			azimut=668.21991;
+			id=35;
+			side="EMPTY";
+			vehicle="FLAY_Target_FITA_122";
+			skill=0.60000002;
+		};
+		class Item18
+		{
+			position[]={6547.0024,47.190346,5049.6851};
+			azimut=-142.10762;
+			id=36;
+			side="EMPTY";
+			vehicle="ArrowMarker_L_F";
+			skill=0.60000002;
+			init="this setvectorup [0,0,1]; this enablesimulation false;";
+		};
+		class Item19
+		{
+			position[]={6539.5557,42.217854,5032.7949};
+			id=37;
+			side="EMPTY";
+			vehicle="Pole_F";
+			skill=0.60000002;
+			init="this setvectorup [0,0,1]; this enablesimulation false;";
+		};
+		class Item20
+		{
+			position[]={6540.1899,42.475746,5033.2451};
+			azimut=-137.84241;
+			id=38;
+			side="EMPTY";
+			vehicle="Box_NATO_Ammo_F";
+			skill=0.60000002;
+			init="clearWeaponCargo this; clearMagazineCargo this; clearItemCargo this; this addBackpackCargo [""b_assaultpack_blk"",3];  this addWeaponCargo [""flay_compoundbow"", 10]; this addWeaponCargo [""flay_recurvebow"", 10]; this addMagazineCargo [""flay_1rnd_arrow"", 50]; this addMagazineCargo [""flay_1rnd_broadheadarrow"", 50]; this addMagazineCargo [""flay_1rnd_explosivearrow"", 50]; this addMagazineCargo [""flay_1rnd_precisionarrow"", 50]; this addItemCargo [""flay_point_broadhead"",50]; this addItemCargo [""flay_point_precision"",50]; this addItemCargo [""flay_point_explosive"",50]; this addItemCargo [""flay_acc_quiver_7"",10]; this addItemCargo [""flay_acc_quiver_7b"",10]; this addItemCargo [""flay_acc_quiver_7he"",10]; this addItemCargo [""flay_acc_quiver_7p"",10]; this addItemCargo [""flay_acc_stabilizer"", 10]; this addItemCargo [""acc_flashlight"", 10]; this addItemCargo [""acc_pointer_ir"", 10]; this addItemCargo [""optic_aco"", 10]; this addItemCargo [""optic_arco"", 10]; this addItemCargo [""optic_holosight"", 10];";
+		};
+		class Item21
+		{
+			position[]={6507.3794,36.02681,5035.9727};
+			azimut=279.21991;
+			id=39;
+			side="EMPTY";
+			vehicle="TargetP_Inf_F";
+			skill=0.60000002;
+			init="nopop=true";
+		};
+		class Item22
+		{
+			position[]={6479.1406,34.954815,5029.293};
+			azimut=270.58826;
+			id=40;
+			side="EMPTY";
+			vehicle="TargetP_Inf_F";
+			skill=0.60000002;
+			init="nopop=true";
+		};
+		class Item23
+		{
+			position[]={6464.7969,38.840725,5046.8345};
+			azimut=269.57629;
+			id=41;
+			side="EMPTY";
+			vehicle="TargetP_Inf_F";
+			skill=0.60000002;
+			init="nopop=true";
+		};
+		class Item24
+		{
+			position[]={6546.9453,42.530022,5026.2817};
+			azimut=-159.42459;
+			id=42;
+			side="EMPTY";
+			vehicle="ArrowMarker_R_F";
+			skill=0.60000002;
+			init="this setvectorup [0,0,1]; this enablesimulation false;";
+		};
+		class Item25
+		{
+			position[]={6554.7617,47.053082,5042.5073};
+			azimut=126.57227;
+			id=43;
+			side="EMPTY";
+			vehicle="ArrowMarker_R_F";
+			skill=0.60000002;
+			init="this setvectorup [0,0,1]; this enablesimulation false;";
+		};
+		class Item26
+		{
+			position[]={6517.334,32.338814,5014.2861};
+			id=44;
+			side="EMPTY";
+			vehicle="Pole_F";
+			skill=0.60000002;
+			init="this setvectorup [0,0,1]; this enablesimulation false;";
+		};
+		class Item27
+		{
+			position[]={6518.3125,32.61972,5014.3921};
+			azimut=-90.722916;
+			id=45;
+			side="EMPTY";
+			vehicle="Box_NATO_Ammo_F";
+			skill=0.60000002;
+			init="clearWeaponCargo this; clearMagazineCargo this; clearItemCargo this; this addBackpackCargo [""b_assaultpack_blk"",3];  this addWeaponCargo [""flay_compoundbow"", 10]; this addWeaponCargo [""flay_recurvebow"", 10]; this addMagazineCargo [""flay_1rnd_arrow"", 50]; this addMagazineCargo [""flay_1rnd_broadheadarrow"", 50]; this addMagazineCargo [""flay_1rnd_explosivearrow"", 50]; this addMagazineCargo [""flay_1rnd_precisionarrow"", 50]; this addItemCargo [""flay_point_broadhead"",50]; this addItemCargo [""flay_point_precision"",50]; this addItemCargo [""flay_point_explosive"",50]; this addItemCargo [""flay_acc_quiver_7"",10]; this addItemCargo [""flay_acc_quiver_7b"",10]; this addItemCargo [""flay_acc_quiver_7he"",10]; this addItemCargo [""flay_acc_quiver_7p"",10]; this addItemCargo [""flay_acc_stabilizer"", 10]; this addItemCargo [""acc_flashlight"", 10]; this addItemCargo [""acc_pointer_ir"", 10]; this addItemCargo [""optic_aco"", 10]; this addItemCargo [""optic_arco"", 10]; this addItemCargo [""optic_holosight"", 10];";
+		};
+		class Item28
+		{
+			position[]={6534.9268,40.070457,5030.2227};
+			azimut=-57.782917;
+			id=46;
+			side="EMPTY";
+			vehicle="ArrowMarker_L_F";
+			skill=0.60000002;
+			init="this setvectorup [0,0,1]; this enablesimulation false;";
+		};
+		class Item29
+		{
+			position[]={6502.4688,25.319727,5003.7285};
+			azimut=222.52057;
+			id=47;
+			side="EMPTY";
+			vehicle="TargetP_Inf_F";
+			skill=0.60000002;
+			init="nopop=true";
+		};
+		class Item30
+		{
+			position[]={6488.4019,22.005409,5003.3022};
+			azimut=222.52057;
+			id=48;
+			side="EMPTY";
+			vehicle="TargetP_Inf_F";
+			skill=0.60000002;
+			init="nopop=true";
+		};
+		class Item31
+		{
+			position[]={6519.8926,20.689583,4987.5952};
+			azimut=182.24385;
+			id=49;
+			side="EMPTY";
+			vehicle="TargetP_Inf_F";
+			skill=0.60000002;
+			init="nopop=true";
+		};
+		class Item32
+		{
+			position[]={6455.5405,18.247194,4970.5542};
+			azimut=668.21991;
+			id=50;
+			side="EMPTY";
+			vehicle="FLAY_Target_FITA_122";
+			skill=0.60000002;
+		};
+		class Item33
+		{
+			position[]={6555.9019,0.018435197,4814.1416};
+			azimut=590.93201;
+			id=51;
+			side="EMPTY";
+			vehicle="FLAY_Target_FITA_122";
+			skill=0.60000002;
+			init="this setposasl [getpos this select 0, getpos this select 1, 4.5];  this addeventhandler [""hit"", ""heli setposasl [getpos heli select 0, getpos heli select 1, 4]; heli enablesimulation true""];";
+		};
+		class Item34
+		{
+			position[]={6531.0205,0,4903.7954};
+			azimut=684.0531;
+			id=52;
+			side="EMPTY";
+			vehicle="O_Boat_Armed_01_hmg_F";
+			skill=0.60000002;
+		};
+	};
+	class Sensors
+	{
+		items=3;
+		class Item0
+		{
+			position[]={6556.4961,0.099617258,4834.584};
+			a=30;
+			b=30;
+			activationBy="EAST";
+			interruptable=1;
+			age="UNKNOWN";
+			class Effects
+			{
+			};
+			synchronizations[]={2,1,0};
+			syncId=3;
+		};
+		class Item1
+		{
+			position[]={6589.5938,80.76162,5187.3247};
+			a=2;
+			b=2;
+			activationBy="WEST";
+			interruptable=1;
+			age="UNKNOWN";
+			expActiv="""Instructions"" hintC [""Press 'R' to load the bow with an arrow from the backpack. Press 'R' again to draw the bow, fire button will release the arrow."", ""Press 'F' to switch to loading from the quiver. I'ts only possible to switch when the bow is empty and a quiver is mounted."", ""Press Shift+R to unload an arrow or undraw a drawn bow."", ""Scroll wheel can also be used to load and unload arrows. Scroll down to load and up to unload. Scrolling up when the bow is empty switches between backpack and quiver."", ""Holding down fire button when the bow is loaded will draw the bow, releasing the button will fire the arrow.""]";
+			class Effects
+			{
+			};
+		};
+		class Item2
+		{
+			position[]={6585.4604,80.613037,5187.689};
+			a=2;
+			b=2;
+			activationBy="WEST";
+			interruptable=1;
+			age="UNKNOWN";
+			expActiv="""WORK IN PROGRESS"" hintC ""Please report any bugs you find in the BIS thread.""";
+			class Effects
+			{
+			};
+		};
+	};
+};
+class Intro
+{
+	addOns[]=
+	{
+		"a3_map_stratis"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_stratis"
+	};
+	randomSeed=1914001;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=7;
+		day=6;
+		hour=14;
+		minute=15;
+		startFogBase=0.001;
+		forecastFogBase=0.001;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+};
+class OutroWin
+{
+	addOns[]=
+	{
+		"a3_map_stratis"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_stratis"
+	};
+	randomSeed=225063;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=7;
+		day=6;
+		hour=14;
+		minute=15;
+		startFogBase=0.001;
+		forecastFogBase=0.001;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+};
+class OutroLoose
+{
+	addOns[]=
+	{
+		"a3_map_stratis"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_stratis"
+	};
+	randomSeed=7984149;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=7;
+		day=6;
+		hour=14;
+		minute=15;
+		startFogBase=0.001;
+		forecastFogBase=0.001;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+};

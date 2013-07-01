@@ -1,0 +1,58 @@
+dev 				= "mrflay";
+author				= "mrflay";
+briefingName 		= "Pythos Hoards: Overkill";
+onLoadName 			= "Pythos Hoards: Overkill";
+onLoadMission 		= "Pythos Hoards: Overkill";
+onLoadMissionTime 	= 0;
+overviewText 		= "Free the captured helicopter crew and eliminate the hoards of enemy soldiers occupying the island of Pythos.";
+overviewTextLocked 	= "";
+overviewPicture 	= "\FLAY\FLAY_Archery_Missions\MPScenarios\MP_ARCHERY_M01.Stratis\overview_co.paa";
+doneKeys[] 			= {"MP_ARCHERY_M01.Stratis_done"};
+stage 				= "Red";
+name                = "name";
+loadScreen          = "\FLAY\FLAY_Archery_Missions\MPScenarios\MP_ARCHERY_M01.Stratis\overview_co.paa";
+
+diagRadio = 1;
+diagHit = 1;
+diagKey = 1;
+diagAAR = 1;
+
+class CfgDebriefing
+{
+	class EndFailure
+	{
+        title = "Challenge Failed"; //TODO: Localize
+        subtitle = "";
+		description = "";
+        //description = "You have failed!"; //TODO: Localize
+		pictureBackground = "\FLAY\FLAY_Archery_Missions\MPScenarios\MP_ARCHERY_M01.Stratis\failure_co.paa";
+	};
+	class EndSuccess
+	{
+        title = "Challenge Completed"; //TODO: Localize
+		subtitle = "";
+		description = "";
+        //description = "You have survived!"; //TODO: Localize
+		pictureBackground = "\FLAY\FLAY_Archery_Missions\MPScenarios\MP_ARCHERY_M01.Stratis\success_co.paa";	
+	};
+};
+
+class CfgIdentities
+{
+	class Doug_Masters 
+	{
+		name="Doug Masters";
+		face="Face20";
+		glasses="None";
+		speaker="Dan";
+		pitch=1.1;	
+	};
+	class Akir_Nakesh
+	{
+		name="Akir Nakesh";
+		face="Face20";
+		glasses="None";
+		speaker="Dan";
+		pitch=1.1;
+	};
+};

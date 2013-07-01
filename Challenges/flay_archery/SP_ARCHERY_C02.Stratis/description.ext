@@ -1,0 +1,36 @@
+dev 				= "mrflay";
+author				= "mrflay";
+briefingName 		= "Competition: Girna Cup";
+onLoadName 			= "Competition: Girna Cup";
+onLoadMission 		= "Competition: Girna Cup";
+onLoadMissionTime 	= 0;
+overviewText 		= "Prove your skills with the Compound Bow in this Field Competition event hosted in the village of Girna.";
+overviewTextLocked 	= "";
+overviewPicture 	= "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C02.Stratis\overview_co.paa";
+doneKeys[] 			= {"SP_ARCHERY_C02.Stratis_done"};
+stage 				= "Red";
+name                = "name";
+loadScreen          = "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C02.Stratis\overview_co.paa";
+
+diagRadio = 1;
+diagHit = 1;
+diagKey = 1;
+diagAAR = 1;
+
+class CfgDebriefing
+{
+	class End1
+	{
+        title = "Challenge Ended"; //TODO: Localize
+        subtitle = "";
+        description = "You've stopped the challenge."; //TODO: Localize
+       	picture = ""; //TODO: proper picture?
+		pictureColor[] = {0.0, 0.3, 0.6, 1};
+	};
+	class End2: End1 
+	{
+        title = "Challenge Failed"; //TODO: Localize
+        subtitle = "";
+        description = "You've failed to observe safe weapon discipline."; //TODO: Localize
+	};
+};
