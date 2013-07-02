@@ -8,14 +8,9 @@ overviewText 		= "Free the captured helicopter crew and eliminate the hoards of 
 overviewTextLocked 	= "";
 overviewPicture 	= "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C03.Stratis\overview_co.paa";
 doneKeys[] 			= {"SP_ARCHERY_C03.Stratis_done"};
-stage 				= "Red";
-name                = "name";
 loadScreen          = "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C03.Stratis\overview_co.paa";
-
-diagRadio = 1;
-diagHit = 1;
-diagKey = 1;
-diagAAR = 1;
+briefing            = 1;
+debriefing          = 1;
 
 class CfgDebriefing
 {

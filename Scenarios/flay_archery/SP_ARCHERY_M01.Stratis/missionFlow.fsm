@@ -1,0 +1,372 @@
+/*%FSM<COMPILE "C:\BIS TOOLS 2.5.1\FSM Editor Personal Edition\scriptedFSM.cfg, Archery Scenario 1">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Infiltrate",2,250,-75.000000,-175.000000,25.000000,-125.000000,0.000000,"Infiltrate"};
+item1[] = {"Pilot_Rescued",4,218,-75.000000,50.000000,25.000000,100.000000,0.000000,"Pilot" \n "Rescued"};
+item2[] = {"Rescue",2,250,-75.000000,-25.000000,25.000000,25.000000,0.000000,"Rescue"};
+item3[] = {"Extract",2,250,-75.000000,125.000000,25.000000,175.000000,0.000000,"Extract"};
+item4[] = {"Arrived__Extract",4,218,-75.000000,200.000000,25.000000,250.000000,0.000000,"Arrived " \n "Extraction"};
+item5[] = {"Rendezvous",2,250,-75.000000,275.000000,25.000000,325.000000,0.000000,"Rendezvous"};
+item6[] = {"Arrived_Rendezvo",4,218,-75.000000,350.000000,25.000000,400.000000,0.000000,"Arrived" \n "Rendezvous"};
+item7[] = {"Pilot_Moved",4,218,75.000000,-25.000000,175.000000,25.000000,0.000000,"Pilot" \n "Moved"};
+item8[] = {"Escape",2,250,225.000000,-25.000000,325.000000,25.000000,0.000000,"Escape"};
+item9[] = {"",7,210,271.000061,221.000000,278.999939,229.000000,0.000000,""};
+item10[] = {"Pilot_Killed",4,218,-275.000000,125.000000,-175.000000,175.000000,0.000000,"Pilot" \n "Killed"};
+item11[] = {"END_Failure_1",1,250,-275.000000,275.000000,-175.000000,325.000000,0.000000,"END" \n "Failure 1"};
+item12[] = {"End",2,250,-75.000000,425.000000,25.000000,475.000000,0.000000,"End"};
+item13[] = {"Pilot_Rescued",4,218,-75.000000,500.000000,25.000000,550.000000,0.000000,"Pilot" \n "Rescued"};
+item14[] = {"Pilot_Moved",4,218,75.000000,425.000000,175.000000,475.000000,0.000000,"Pilot" \n "Moved"};
+item15[] = {"END_Failure_2",1,250,75.000000,575.000000,175.000000,625.000000,0.000000,"END" \n "Failure 2"};
+item16[] = {"Arrived__Pythos",4,218,-75.000000,-100.000000,25.000000,-50.000000,0.000000,"Arrived" \n " Pythos"};
+item17[] = {"END_Succes",1,250,-75.000000,575.000000,25.000000,625.000000,0.000000,"END" \n "Succes"};
+item18[] = {"init",0,250,-75.000000,-325.000000,25.000000,-275.000000,0.000000,"init"};
+item19[] = {"Ready",4,218,-75.000000,-250.000000,25.000000,-200.000000,0.000000,"Ready"};
+link0[] = {0,16};
+link1[] = {1,3};
+link2[] = {2,1};
+link3[] = {2,7};
+link4[] = {2,10};
+link5[] = {3,4};
+link6[] = {3,10};
+link7[] = {4,5};
+link8[] = {5,6};
+link9[] = {5,10};
+link10[] = {6,12};
+link11[] = {7,8};
+link12[] = {8,9};
+link13[] = {9,4};
+link14[] = {10,11};
+link15[] = {12,13};
+link16[] = {12,14};
+link17[] = {13,17};
+link18[] = {14,15};
+link19[] = {16,2};
+link20[] = {18,19};
+link21[] = {19,0};
+globals[] = {25.000000,1,0,0,0,640,480,1,207,6316128,1,-451.017334,597.750244,520.266724,-519.372375,1034,1025,1};
+window[] = {2,-1,-1,-1,-1,792,25,1556,25,3,1052};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "Archery Scenario 1";
+  class States
+  {
+    /*%FSM<STATE "Infiltrate">*/
+    class Infiltrate
+    {
+      name = "Infiltrate";
+      init = /*%FSM<STATEINIT""">*/"// ===========" \n
+       "// TASKS" \n
+       "// ===========" \n
+       "[""FLAY_Infiltrate"", _markerInfiltrate] call BIS_fnc_missionTasks;" \n
+       "" \n
+       "// allow us to get close to the shore without triggering ai" \n
+       "player setCaptive true;" \n
+       "" \n
+       "[] spawn {" \n
+       "	waitUntil { driver boat == player };" \n
+       "	while { driver boat == player } do {" \n
+       "		if  ((player distance pilot < 250) && (speed player > 20)) exitWith { hint ""Reduce speed below 20 km/h to avoid detection!""; };" \n
+       "		sleep 1;" \n
+       "	};" \n
+       "	sleep 5;" \n
+       "	while { driver boat == player } do {" \n
+       "		if ((player distance pilot < 200) && (speed player > 20)) exitWith { };" \n
+       "		sleep 1;" \n
+       "	};" \n
+       "	player setCaptive false;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Arrived__Pythos">*/
+        class Arrived__Pythos
+        {
+          priority = 0.000000;
+          to="Rescue";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil { FLAY_playerInfiltrated }"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Rescue">*/
+    class Rescue
+    {
+      name = "Rescue";
+      init = /*%FSM<STATEINIT""">*/"// Succeed Infiltration task" \n
+       "[""FLAY_Infiltrate"", ""SUCCEEDED""] call BIS_fnc_missionTasks;" \n
+       "" \n
+       "// Add Rescue task and assign it" \n
+       "[""FLAY_Rescue"", _markerCrashsite] call BIS_fnc_missionTasks;" \n
+       "" \n
+       "[] spawn {" \n
+       "	sleep 5;" \n
+       "	saveGame;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Pilot_Moved">*/
+        class Pilot_Moved
+        {
+          priority = 0.000000;
+          to="Escape";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(vehicle pilot) == evac_heli && (evac_heli distance player) > 300"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Pilot_Killed">*/
+        class Pilot_Killed
+        {
+          priority = 0.000000;
+          to="END_Failure_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive pilot"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Pilot_Rescued">*/
+        class Pilot_Rescued
+        {
+          priority = 0.000000;
+          to="Extract";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(group pilot) == (group player)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Extract">*/
+    class Extract
+    {
+      name = "Extract";
+      init = /*%FSM<STATEINIT""">*/"REINFORCEMENTS=true;" \n
+       "" \n
+       "// Make officer part of the search and destroy team." \n
+       "[evac_officer] joinSilent (group evac_team);" \n
+       "evac_officer setCombatMode ""red"";" \n
+       "evac_officer setBehaviour ""aware"";" \n
+       "(group pilot) setSpeedMode ""FULL"";" \n
+       "" \n
+       "// Succeed Rescue task" \n
+       "[""FLAY_Rescue"", ""SUCCEEDED""] call BIS_fnc_missionTasks;" \n
+       "" \n
+       "// Add Extract task and assign it" \n
+       "[""FLAY_Extract"", _markerExtract] call BIS_fnc_missionTasks;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Pilot_Killed">*/
+        class Pilot_Killed
+        {
+          priority = 0.000000;
+          to="END_Failure_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive pilot"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Arrived__Extract">*/
+        class Arrived__Extract
+        {
+          priority = 0.000000;
+          to="Rendezvous";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(vehicle pilot) == boat && (driver boat) == player"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Rendezvous">*/
+    class Rendezvous
+    {
+      name = "Rendezvous";
+      init = /*%FSM<STATEINIT""">*/"// Succeed Extract task" \n
+       "[""FLAY_Extract"", ""SUCCEEDED""] call BIS_fnc_missionTasks;" \n
+       "" \n
+       "// Add Rendezvous task and assign it" \n
+       "[""FLAY_Rendezvous"", _markerRendezvous] call BIS_fnc_missionTasks;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Pilot_Killed">*/
+        class Pilot_Killed
+        {
+          priority = 0.000000;
+          to="END_Failure_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive pilot"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Arrived_Rendezvo">*/
+        class Arrived_Rendezvo
+        {
+          priority = 0.000000;
+          to="End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(player distance truck) < 20"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Escape">*/
+    class Escape
+    {
+      name = "Escape";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "// Succeed Rescue task" \n
+       "[""FLAY_Rescue"", ""FAILED""] call BIS_fnc_missionTasks;" \n
+       "" \n
+       "// Add Extract task and assign it" \n
+       "[""FLAY_Extract"", _markerExtract] call BIS_fnc_missionTasks;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Arrived__Extract">*/
+        class Arrived__Extract
+        {
+          priority = 0.000000;
+          to="Rendezvous";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(vehicle pilot) == boat && (driver boat) == player"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "END_Failure_1">*/
+    class END_Failure_1
+    {
+      name = "END_Failure_1";
+      init = /*%FSM<STATEINIT""">*/"// ============" \n
+       "// END MISSION" \n
+       "// ============" \n
+       "" \n
+       "_task = [player] call BIS_fnc_taskCurrent;" \n
+       "[_task, ""FAILED"", true] call BIS_fnc_taskSetState;" \n
+       "" \n
+       "[] spawn {" \n
+       "	sleep 5;" \n
+       "	[""EndFailure"", false, true] call BIS_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End">*/
+    class End
+    {
+      name = "End";
+      init = /*%FSM<STATEINIT""">*/"// Succeed Extract task" \n
+       "[""FLAY_Extract"", ""SUCCEEDED""] call BIS_fnc_missionTasks;" \n
+       "" \n
+       "// Add Rendezvous task and assign it" \n
+       "[""FLAY_Rendezvous"", _markerRendezvous] call BIS_fnc_missionTasks;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Pilot_Moved">*/
+        class Pilot_Moved
+        {
+          priority = 0.000000;
+          to="END_Failure_2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil { FLAY_pilotMoved }"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Pilot_Rescued">*/
+        class Pilot_Rescued
+        {
+          priority = 0.000000;
+          to="END_Succes";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"pilot distance truck < 20"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "END_Failure_2">*/
+    class END_Failure_2
+    {
+      name = "END_Failure_2";
+      init = /*%FSM<STATEINIT""">*/"// ============" \n
+       "// END MISSION" \n
+       "// ============" \n
+       "" \n
+       "[""EndFailure"", false, true] call BIS_fnc_endMission;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "END_Succes">*/
+    class END_Succes
+    {
+      name = "END_Succes";
+      init = /*%FSM<STATEINIT""">*/"// ============" \n
+       "// END MISSION" \n
+       "// ============" \n
+       "" \n
+       "[""EndSuccess"", true, true] call BIS_fnc_endMission;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"_markerInfiltrate = getMarkerPos ""FLAY_markerInfiltrate"";" \n
+       "_markerCrashsite = getMarkerPos ""FLAY_markerCrashsite"";" \n
+       "_markerExtract = getMarkerPos ""FLAY_markerInfiltrate"";" \n
+       "_markerRendezvous = getMarkerPos ""FLAY_markerRendezvous"";" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Ready">*/
+        class Ready
+        {
+          priority = 0.000000;
+          to="Infiltrate";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil { BIS_missionStarted }" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="init";
+  finalStates[] =
+  {
+    "END_Failure_1",
+    "END_Failure_2",
+    "END_Succes",
+  };
+};
+/*%FSM</COMPILE>*/

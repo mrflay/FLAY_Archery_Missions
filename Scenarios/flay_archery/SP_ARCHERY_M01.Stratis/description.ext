@@ -8,9 +8,9 @@ overviewText 		= "Locate and eliminate a high ranking enemy officer.";
 overviewTextLocked 	= "";
 overviewPicture 	= "\FLAY\FLAY_Archery_Missions\Scenarios\flay_archery\SP_ARCHERY_M01.Stratis\overview_co.paa";
 doneKeys[] 			= {"SP_ARCHERY_M01.Stratis_done"};
-stage 				= "Red";
-name                = "name";
 loadScreen          = "\FLAY\FLAY_Archery_Missions\Scenarios\flay_archery\SP_ARCHERY_M01.Stratis\overview_co.paa";
+briefing            = 1;
+debriefing          = 1;
 
 diagRadio = 1;
 diagHit = 1;
