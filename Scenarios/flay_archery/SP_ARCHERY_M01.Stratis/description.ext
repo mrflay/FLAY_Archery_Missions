@@ -1,10 +1,10 @@
 dev 				= "mrflay";
 author				= "mrflay";
-briefingName 		= "First Blood: Part I";
-onLoadName 			= "First Blood: Part I";
-onLoadMission 		= "First Blood: Part I";
+briefingName 		= "Tartarus Gauntlet";
+onLoadName 			= "Tartarus Gauntlet";
+onLoadMission 		= "Tartarus Gauntlet";
 onLoadMissionTime 	= 0;
-overviewText 		= "Locate and eliminate a high ranking enemy officer.";
+overviewText 		= "Rescue the surviving crew member of a downed attack helicopter before he is moved to a secure facility.";
 overviewTextLocked 	= "";
 overviewPicture 	= "\FLAY\FLAY_Archery_Missions\Scenarios\flay_archery\SP_ARCHERY_M01.Stratis\overview_co.paa";
 doneKeys[] 			= {"SP_ARCHERY_M01.Stratis_done"};

@@ -40,9 +40,9 @@ case "FLAY_Extract" : {
 			player,
 			_taskID,
 			[
-				localize "STR_A3_Showcase_Night2_BIS_Extraction_desc",
-				localize "STR_A3_Showcase_Night2_BIS_Extraction_title",
-				"FLAY_marker"
+				"Escort the crew to the extraction point.",
+				"Extraction",
+				"Extraction"
 			],
 			_this,
 			true
@@ -58,9 +58,9 @@ case "FLAY_Rendezvous" : {
 			player,
 			_taskID,
 			[
-				localize "STR_A3_Showcase_Night2_BIS_Extraction_desc",
-				localize "STR_A3_Showcase_Night2_BIS_Extraction_title",
-				localize "STR_A3_Showcase_Night2_BIS_Extraction_marker"
+				 "Rendezvous with the extraction team in Kamino Bay",
+				 "Rendezvous",
+				 "Rendezvous"
 			],
 			_this,
 			true

@@ -1,7 +1,7 @@
 /*%FSM<COMPILE "C:\BIS TOOLS 2.5.1\FSM Editor Personal Edition\scriptedFSM.cfg, Archery Scenario 1">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Infiltrate",2,250,-75.000000,-175.000000,25.000000,-125.000000,0.000000,"Infiltrate"};
+item0[] = {"Infiltrate",2,4346,-75.000000,-175.000000,25.000000,-125.000000,0.000000,"Infiltrate"};
 item1[] = {"Pilot_Rescued",4,218,-75.000000,50.000000,25.000000,100.000000,0.000000,"Pilot" \n "Rescued"};
 item2[] = {"Rescue",2,250,-75.000000,-25.000000,25.000000,25.000000,0.000000,"Rescue"};
 item3[] = {"Extract",2,250,-75.000000,125.000000,25.000000,175.000000,0.000000,"Extract"};
@@ -18,7 +18,7 @@ item13[] = {"Pilot_Rescued",4,218,-75.000000,500.000000,25.000000,550.000000,0.0
 item14[] = {"Pilot_Moved",4,218,75.000000,425.000000,175.000000,475.000000,0.000000,"Pilot" \n "Moved"};
 item15[] = {"END_Failure_2",1,250,75.000000,575.000000,175.000000,625.000000,0.000000,"END" \n "Failure 2"};
 item16[] = {"Arrived__Pythos",4,218,-75.000000,-100.000000,25.000000,-50.000000,0.000000,"Arrived" \n " Pythos"};
-item17[] = {"END_Succes",1,250,-75.000000,575.000000,25.000000,625.000000,0.000000,"END" \n "Succes"};
+item17[] = {"END_Success",1,250,-75.000000,575.000000,25.000000,625.000000,0.000000,"END" \n "Success"};
 item18[] = {"init",0,250,-75.000000,-325.000000,25.000000,-275.000000,0.000000,"init"};
 item19[] = {"Ready",4,218,-75.000000,-250.000000,25.000000,-200.000000,0.000000,"Ready"};
 link0[] = {0,16};
@@ -43,8 +43,8 @@ link18[] = {14,15};
 link19[] = {16,2};
 link20[] = {18,19};
 link21[] = {19,0};
-globals[] = {25.000000,1,0,0,0,640,480,1,207,6316128,1,-451.017334,597.750244,520.266724,-519.372375,1034,1025,1};
-window[] = {2,-1,-1,-1,-1,792,25,1556,25,3,1052};
+globals[] = {25.000000,1,0,0,0,640,480,1,207,6316128,1,-597.086060,743.818665,757.338806,-571.894592,1034,1025,1};
+window[] = {2,-1,-1,-1,-1,817,50,1581,50,3,1052};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -58,7 +58,13 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"// ===========" \n
        "// TASKS" \n
        "// ===========" \n
-       "[""FLAY_Infiltrate"", _markerInfiltrate] call BIS_fnc_missionTasks;" \n
+       "" \n
+       "[] spawn {" \n
+       "	sleep 7;" \n
+       "	_markerInfiltrate = getMarkerPos ""FLAY_markerInfiltrate"";" \n
+       "	[""FLAY_Infiltrate"", _markerInfiltrate] call BIS_fnc_missionTasks;" \n
+       "};" \n
+       "" \n
        "" \n
        "// allow us to get close to the shore without triggering ai" \n
        "player setCaptive true;" \n
@@ -66,7 +72,7 @@ class FSM
        "[] spawn {" \n
        "	waitUntil { driver boat == player };" \n
        "	while { driver boat == player } do {" \n
-       "		if  ((player distance pilot < 250) && (speed player > 20)) exitWith { hint ""Reduce speed below 20 km/h to avoid detection!""; };" \n
+       "		if  ((player distance pilot < 220) && (speed player > 20)) exitWith { hint ""Reduce speed below 20 km/h to avoid detection!""; };" \n
        "		sleep 1;" \n
        "	};" \n
        "	sleep 5;" \n
@@ -293,7 +299,7 @@ class FSM
         class Pilot_Rescued
         {
           priority = 0.000000;
-          to="END_Succes";
+          to="END_Success";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"pilot distance truck < 20"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -318,10 +324,10 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "END_Succes">*/
-    class END_Succes
+    /*%FSM<STATE "END_Success">*/
+    class END_Success
     {
-      name = "END_Succes";
+      name = "END_Success";
       init = /*%FSM<STATEINIT""">*/"// ============" \n
        "// END MISSION" \n
        "// ============" \n
@@ -366,7 +372,7 @@ class FSM
   {
     "END_Failure_1",
     "END_Failure_2",
-    "END_Succes",
+    "END_Success",
   };
 };
 /*%FSM</COMPILE>*/

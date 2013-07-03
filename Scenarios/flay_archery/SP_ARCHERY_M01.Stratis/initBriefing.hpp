@@ -30,5 +30,5 @@ player createDiaryRecord [
 	disableserialization;
 	_diary = finddisplay 37;
 	_diaryList = _diary displayctrl 1001;
-	_diaryList lbsetcursel 2;
+	_diaryList lbsetcursel 1;
 };
