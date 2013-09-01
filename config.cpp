@@ -26,14 +26,14 @@ class CfgMissions
 			};	
 		};
 	};	
-	class MPMissions
-	{
-		class MP_Archery_Mission_01
-		{
-			briefingName = "Archery: Hunter";
-			directory = "FLAY\FLAY_Archery_Missions\mpscenarios\mp_archery_m01.stratis";
-		};
-	};
+	//class MPMissions
+	//{
+	//	class MP_Archery_Mission_01
+	//	{
+	//		briefingName = "Archery: Hunter";
+	//		directory = "FLAY\FLAY_Archery_Missions\mpscenarios\mp_archery_m01.stratis";
+	//	};
+	//};
 	class Challenges
 	{
 		class flay_archery
@@ -61,7 +61,11 @@ class CfgMissions
 			class SP_ARCHERY_C04
 			{
 				directory = "FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C04.Stratis";
-			};			
+			};
+			class SP_ARCHERY_C05
+			{
+				directory = "FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C05.Stratis";
+			};				
 		};
 	};
 	class CfgFlayArchery

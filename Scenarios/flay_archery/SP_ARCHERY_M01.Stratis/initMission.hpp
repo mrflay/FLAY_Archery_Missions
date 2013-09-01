@@ -25,22 +25,27 @@ _colorEast set [3, 0.45];
 	270,
 	1,
 	[
-		["\a3\ui_f\data\map\markers\nato\b_air.paa", _colorEast, getMarkerPos "FLAY_markerCrashsite", 1, 1, 0, "Zulu", 0],
-		["\a3\ui_f\data\map\markers\nato\b_inf.paa", _colorEast, getMarkerPos "FLAY_markerInfiltrate", 1, 1, 0, "Gemini", 0]
+		["\a3\ui_f\data\map\markers\nato\b_air.paa", _colorEast, getMarkerPos "FLAY_markerCrashsite", 1, 1, 0, "Zulu", 0]//,
+		//["\a3\ui_f\data\map\markers\nato\b_inf.paa", _colorEast, getMarkerPos "FLAY_markerInfiltrate", 1, 1, 0, "Gemini", 0]
 	]
 ] spawn BIS_fnc_establishingShot;
 waitUntil { !isNil { BIS_missionStarted } };
 
 titleText ["", "BLACK FADED", 10];
+0 fadeSound 0;
+0 fadeMusic 0;
+enableRadio false;
+enableEnvironment false;
+clearRadio;
 
 //Play music and fade in screen, music and sound
 [] spawn {
 	//Play some music
 	playMusic "Track09_Night_percussions";
-	sleep 1;
-	titleText ["", "BLACK IN", 3];
-	5 fadeSound 0.4;
 	5 fadeMusic 0.18;
+	sleep 3;
+	titleText ["", "BLACK IN", 3];
+	3 fadeSound 0.4;
 	enableRadio true;
 	enableEnvironment true;
 	
@@ -54,29 +59,21 @@ titleText ["", "BLACK FADED", 10];
 };
 
 //Player stuff
-removeAllWeapons player;
-removeHeadgear player;
-removeBackpack player;
-player addBackpack "B_AssaultPack_blk";
-clearAllItemsFromBackpack player;
 
-player addWeapon "Binocular";
-player addWeapon "flay_compoundbow";
 
 unitBackpack player addMagazineCargo ["flay_1rnd_broadheadarrow", 15];
 unitBackpack player addMagazineCargo ["DemoCharge_Remote_Mag", 3];
-player addItem "FirstAidKit";
 
-player selectWeapon primaryWeapon player;
-player addPrimaryWeaponItem "flay_acc_quiver_7he";
-player addPrimaryWeaponItem "optic_aco";
-player unassignItem "NVGoggles";
-player removeItem "NVGoggles";
-
-group player setGroupId ["Gemini"];
-player setIdentity "Doug_Masters";
-pilot setIdentity "Ted_Masters";
-evac_officer setIdentity "Akir_Nakesh";
+player unassignItem "NVGoggles_INDEP";
+player removeItem "NVGoggles_INDEP";
 
 // triggers fade out of music when enemy starts firing
 player addEventHandler ["firedNear", "if (side (_this select 1) == east) then { FLAY_EnemyAware = true; }; "];
+
+group player setGroupId ["Gemini"];
+//player setIdentity "Doug_Masters";
+//evac_officer setIdentity "Akir_Nakesh";
+//pilot setIdentity "Ted_Masters";
+
+//pilot setDamage 0.6;
+boat engineOn true;

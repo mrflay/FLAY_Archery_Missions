@@ -1,19 +1,14 @@
 dev 				= "mrflay";
 author				= "mrflay";
-briefingName 		= "Pythos Hoards: Goliath";
-onLoadName 			= "Pythos Hoards: Goliath";
-onLoadMission 		= "Pythos Hoards: Goliath";
+briefingName 		= "Pythos Arena: Overkill";
+onLoadName 			= "Pythos Arena: Overkill";
+onLoadMission 		= "Eliminate the hoards of enemy soldiers occupying the island of Pythos.";
 onLoadMissionTime 	= 0;
-overviewText 		= "Face off Man against Beast. Unarmed. Find the weapon stash and take out the enemy gunship before it blows you to pieces.";
+overviewText 		= "Eliminate the hoards of enemy soldiers occupying the island of Pythos.";
 overviewTextLocked 	= "";
-overviewPicture 	= "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C04.Stratis\overview2_co.paa";
+overviewPicture 	= "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C04.Stratis\overview_co.paa";
 doneKeys[] 			= {"SP_ARCHERY_C04.Stratis_done"};
-loadScreen          = "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C04.Stratis\overview2_co.paa";
-
-diagRadio = 1;
-diagHit = 1;
-diagKey = 1;
-diagAAR = 1;
+loadScreen          = "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C04.Stratis\overview_co.paa";
 
 class CfgDebriefing
 {
@@ -22,16 +17,14 @@ class CfgDebriefing
         title = "Challenge Failed"; //TODO: Localize
         subtitle = "";
 		description = "";
-        //description = "You have failed!"; //TODO: Localize
-		pictureBackground = "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C04.Stratis\failure_co.paa";
+		//pictureBackground = "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C04.Stratis\failure_co.paa";
 	};
 	class EndSuccess
 	{
         title = "Challenge Completed"; //TODO: Localize
 		subtitle = "";
 		description = "";
-        //description = "You have survived!"; //TODO: Localize
-		pictureBackground = "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C04.Stratis\success_co.paa";	
+		//pictureBackground = "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C04.Stratis\success_co.paa";	
 	};
 };
 
@@ -40,97 +33,45 @@ class CfgWaves
 {
 	waves[] = {
 		"Wave1",
-		"Wave2"
-		//"Wave3",
-		//"Wave4",
-		//"Wave5"
+		"Wave2",
+		"Wave3",
+		"Wave4"
 	};
 	
 	class Wave1
 	{
+		title = "Eliminate first wave";
+		desc = "Kill the enemy officer";
 		units[] = {"officer"};
-		description = "Kill enemy officer";
-		weapons[] = {"flay_compoundbow"};
-		magazines[] = {
-			"flay_1rnd_arrow",
-			"flay_1rnd_arrow"
-		};
-		items[] = {
-			"flay_point_broadhead",
-			"flay_acc_quiver_7he"
-		};
 	};
 	
 	class Wave2
 	{
-		//units[] = {"officer","soldier"};
-		units[] = {"heli"};
-		description = "Kill two enemies";
-		weapons[] = {};
-		magazines[] = {
-			"flay_1rnd_arrow",
-			"flay_1rnd_arrow",
-			"flay_1rnd_arrow"
-		};
-		items[] = {
-			"flay_point_broadhead",
-			"flay_point_broadhead"
-		};		
+		title = "Eliminate second wave";
+		desc = "Kill two enemy officers";	
+		units[] = {"officer","officer"};
 	};
 
 	class Wave3
 	{
+		
+		title = "Eliminate third wave";
+		desc = "Kill three enemy officers";		
 		units[] = {"officer","officer","officer"};
-		description = "Kill three enemy officers";
-		weapons[] = {};
-		magazines[] = {
-			"flay_1rnd_arrow",
-			"flay_1rnd_arrow",
-			"flay_1rnd_arrow",
-			"flay_1rnd_arrow"
-		};
-		items[] = {
-			"flay_point_broadhead",
-			"flay_point_broadhead",
-			"flay_point_broadhead"
-		};			
 	};
 	
 	class Wave4
 	{
+		title = "Eliminate fourth wave";
+		desc = "Kill enemy officer and two soldiers";
 		units[] = {"officer","soldier","soldier"};
-		description = "Kill enemy officer and soldiers";
-		weapons[] = {};
-		magazines[] = {
-			"flay_1rnd_arrow",
-			"flay_1rnd_arrow",
-			"flay_1rnd_arrow"
-		};
-		items[] = {
-			"flay_acc_quiver_7b",
-			"flay_point_explosive",
-			"flay_point_explosive"
-		};		
 	};
-
+	
 	class Wave5
 	{
-		units[] = {"heli"};
-		description = "Kill enemy attack helicopter";
-		weapons[] = {};
-		magazines[] = {
-			"flay_1rnd_arrow",
-			"flay_1rnd_arrow",
-			"flay_1rnd_arrow",
-			"flay_1rnd_arrow",
-			"flay_1rnd_arrow"
-		};
-		items[] = {
-			"flay_acc_quiver_7he",
-			"flay_point_explosive",
-			"flay_point_explosive",
-			"flay_point_explosive"
-		};			
+		title = "Eliminate fifth wave";
+		desc = "Kill enemy fire team";
+		units[] = {"soldier","soldier","soldier","soldier","soldier","soldier"};
 	};
 
 	class Units {
@@ -145,7 +86,7 @@ class CfgWaves
 		{
 			type = "O_Soldier_F";
 			weapons[] = {"arifle_Katiba_ACO_F", "hgun_rook40_f"};
-			magazines[] = {"30Rnd_65x39_caseless_green", "16Rnd_9x21_Mag"};
+			magazines[] = {"30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green","30Rnd_65x39_caseless_green", "16Rnd_9x21_Mag"};
 		};
 		class heli
 		{
@@ -154,100 +95,5 @@ class CfgWaves
 	};
 };
 
-class CfgIdentities
-{
-	class Doug_Masters 
-	{
-		name="Doug Masters";
-		face="Face20";
-		glasses="None";
-		speaker="Dan";
-		pitch=1.1;	
-	};
-	class Akir_Nakesh
-	{
-		name="Akir Nakesh";
-		face="Face20";
-		glasses="None";
-		speaker="Dan";
-		pitch=1.1;
-	};
-};
-
-// ===========================================================================
-// DIALOGS
-// ===========================================================================
-
-#define CT_STATIC  0
-#define ST_LEFT    0
-#define ST_PICTURE 48
-
-class FLAY_RscText {
-	idc = -1;
-	type = CT_STATIC;
-	style = ST_LEFT;
-	colorBackground[] = {0, 0, 0, 0};
-	colorText[] = {1, 1, 1, 1};
-	font = "PuristaMedium";
-	sizeEx = "1";
-	x = -0.3; 
-	y = -0.12;
-	w = 0.1; 
-	h = 0.1;
-	text = "";
-};
-
-class FLAY_RscPicture {
-	idc = -1;
-	type = CT_STATIC;
-	style = ST_PICTURE;
-	colorBackground[] = { 0, 0, 0, 0 };
-	colorText[] = {1, 1, 1, 1};
-	font = "PuristaMedium";
-	sizeEx = "1";
-	x = 0; 
-	y = 0;
-	w = 0.1; 
-	h = 0.1;
-	text = "";
-};
-
-class RscTitles
-{
-	titles[] = {"FLAY_RscArcheryScore"};
-
-	class FLAY_RscArcheryScore
-	{
-		idd = -1;
-		enableSimulation=1;
-		movingEnable=1;
-		duration = 1e+011;
-		fadein = 0;
-		onLoad = "uinamespace setvariable ['FLAY_RscArcheryScore',_this select 0];";
-		onUnload = "uinamespace setvariable ['FLAY_RscArcheryScore',nil];";
-
-		controls[] = {"Name", "TotalScore"};
-		
-		class Name: FLAY_RscText {
-			idc = 3022;
-			colorText[] = {1,1,1,1};
-			x = safezoneX + 0.04;
-			y = safezoneY + safezoneH - (0.4 * 4 / 3) - 0.04;
-			shadow = 1;
-		};
-		
-		class TotalScore: FLAY_RscText {
-			idc = 3023;
-			colorText[] = {1,1,1,1};
-			x = 0;
-			y = 0;
-			class Attributes
-			{
-				align = "left";
-				font = "PuristaMedium";
-				shadow = 1;
-				size = 1;
-			};
-		};	
-	};
-};
+#include "defines.hpp"
+#include "dialogs.hpp"

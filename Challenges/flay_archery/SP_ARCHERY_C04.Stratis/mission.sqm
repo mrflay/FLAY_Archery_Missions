@@ -3,29 +3,18 @@ class Mission
 {
 	addOns[]=
 	{
-		"A3_Air_F_Heli_Light_01",
-		"a3_map_stratis",
-		"A3_Characters_F_Civil",
-		"A3_Boat_F_Boat_Transport_01",
-		"A3_Structures_F_Mil_BagBunker",
-		"A3_Characters_F_OPFOR",
-		"a3_characters_f_beta",
-		"A3_Characters_F_BLUFOR"
+		"flay_archery_units",
+		"a3_map_stratis"
 	};
 	addOnsAuto[]=
 	{
-		"A3_Air_F_Heli_Light_01",
-		"A3_Characters_F_Civil",
-		"A3_Characters_F_BLUFOR",
-		"a3_characters_f_beta",
-		"A3_Characters_F_OPFOR",
-		"A3_Boat_F_Boat_Transport_01",
-		"A3_Structures_F_Mil_BagBunker",
+		"flay_archery_units",
 		"a3_map_stratis"
 	};
-	randomSeed=4820341;
+	randomSeed=14024835;
 	class Intel
 	{
+		resistanceWest=0;
 		startWeather=0.59999996;
 		startFog=0.12;
 		startWind=0.099999994;
@@ -47,548 +36,71 @@ class Mission
 	};
 	class Groups
 	{
-		items=7;
+		items=1;
 		class Item0
 		{
-			side="WEST";
+			side="GUER";
 			class Vehicles
 			{
 				items=1;
 				class Item0
 				{
-					position[]={3594.9419,180.36758,3140.7183};
-					special="FLY";
+					position[]={7025.8794,2.3992982,5906.021};
+					azimut=109.189;
 					id=0;
-					side="WEST";
-					vehicle="B_Heli_Light_01_armed_F";
-					leader=1;
-					skill=0.60000002;
-				};
-			};
-		};
-		class Item1
-		{
-			side="WEST";
-			class Vehicles
-			{
-				items=2;
-				class Item0
-				{
-					presence=0;
-					position[]={7016.2959,0.30968511,5906.626};
-					azimut=-289.16699;
-					special="NONE";
-					id=1;
-					side="CIV";
-					vehicle="C_man_polo_4_F";
+					side="GUER";
+					vehicle="FLAY_I_Archer_CompoundBow";
 					player="PLAYER COMMANDER";
-					skill=0.60000002;
-					init="this addweapon ""flay_compoundbow""; this addbackpack ""b_assaultpack_blk""; this addmagazine ""flay_1rnd_arrow""; this addmagazine ""flay_1rnd_arrow""; this addmagazine ""flay_1rnd_arrow""; this additem ""flay_point_broadhead""; this addweapon ""binocular"";";
-				};
-				class Item1
-				{
-					presence=0;
-					position[]={7015.7939,-0.020627452,5910.2559};
-					azimut=-200.892;
-					special="NONE";
-					id=2;
-					side="WEST";
-					vehicle="B_officer_F";
-					leader=1;
-					rank="COLONEL";
-					skill=0.60000002;
-					ammo=0;
-				};
-			};
-			class Waypoints
-			{
-				items=1;
-				class Item0
-				{
-					position[]={7089.2031,7.6792626,5935.2129};
-					completitionRadius=15;
-					expActiv="0=[] execVM ""start.sqf""";
-					class Effects
-					{
-					};
-					showWP="NEVER";
-				};
-			};
-		};
-		class Item2
-		{
-			side="LOGIC";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={7090.7534,7.736001,5935.7212};
-					azimut=-390.22501;
-					special="NONE";
-					id=3;
-					side="LOGIC";
-					vehicle="Logic";
-					leader=1;
-					lock="UNLOCKED";
-					skill=0.2;
-					init="x=""Land_Wreck_Heli_Attack_01_F"" createVehicle (getpos this); x setpos (getpos this)";
-				};
-			};
-		};
-		class Item3
-		{
-			side="EAST";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={7046.7759,4.1616211,5891.6113};
-					azimut=-231.55901;
-					id=4;
-					side="EAST";
-					vehicle="O_officer_F";
-					leader=1;
-					rank="MAJOR";
-					skill=0.60000002;
-					init="removeallweapons this; this addweapon ""hgun_rook40_f""; this addMagazine ""16Rnd_9x21_Mag""; this addMagazine ""16Rnd_9x21_Mag""; this addMagazine ""16Rnd_9x21_Mag"";";
-				};
-			};
-			class Waypoints
-			{
-				items=8;
-				class Item0
-				{
-					position[]={7047.7749,3.8139391,5890.812};
-					combatMode="RED";
-					speed="LIMITED";
-					combat="SAFE";
-					synchronizations[]={1};
-					class Effects
-					{
-					};
-					timeoutMin=5;
-					timeoutMid=10;
-					timeoutMax=15;
-					showWP="NEVER";
-					syncId=0;
-				};
-				class Item1
-				{
-					position[]={7034.0718,5.09199,5878.1313};
-					class Effects
-					{
-					};
-					showWP="NEVER";
-				};
-				class Item2
-				{
-					position[]={7033.9155,4.9919496,5876.2373};
-					class Effects
-					{
-					};
-					timeoutMin=10;
-					timeoutMid=15;
-					timeoutMax=20;
-					showWP="NEVER";
-				};
-				class Item3
-				{
-					position[]={7042.0127,3.9057395,5898.0176};
-					class Effects
-					{
-					};
-					showWP="NEVER";
-				};
-				class Item4
-				{
-					position[]={7034.4297,2.2207458,5903.7271};
-					class Effects
-					{
-					};
-					showWP="NEVER";
-				};
-				class Item5
-				{
-					position[]={7024.1274,2.3136425,5908.1973};
-					class Effects
-					{
-					};
-					timeoutMin=5;
-					timeoutMid=10;
-					timeoutMax=15;
-					showWP="NEVER";
-				};
-				class Item6
-				{
-					position[]={7035.9116,2.1075048,5903.1938};
-					class Effects
-					{
-					};
-					showWP="NEVER";
-				};
-				class Item7
-				{
-					position[]={7046.2139,4.267107,5893.3311};
-					type="CYCLE";
-					class Effects
-					{
-					};
-					showWP="NEVER";
-				};
-			};
-		};
-		class Item4
-		{
-			side="EAST";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={7115.5962,9.0124397,5929.0166};
-					azimut=-178.576;
-					special="NONE";
-					id=5;
-					side="EAST";
-					vehicle="O_officer_F";
 					leader=1;
 					skill=0.60000002;
-					init="removeallweapons this; this addweapon ""hgun_rook40_f""; this addMagazine ""16Rnd_9x21_Mag""; this addMagazine ""16Rnd_9x21_Mag""; this addMagazine ""16Rnd_9x21_Mag""; removeHeadgear this; removeVest this; removeGoggles this; this setbehaviour ""safe""; this setcombatmode ""red""; removeAllItems this;";
 				};
 			};
-			class Waypoints
-			{
-				items=11;
-				class Item0
-				{
-					position[]={7115.5327,8.8397045,5930.145};
-					completitionRadius=1;
-					combatMode="RED";
-					speed="LIMITED";
-					combat="SAFE";
-					class Effects
-					{
-					};
-					timeoutMin=5;
-					timeoutMid=10;
-					timeoutMax=15;
-					showWP="NEVER";
-				};
-				class Item1
-				{
-					position[]={7114.3447,8.5524464,5935.2871};
-					class Effects
-					{
-					};
-					showWP="NEVER";
-				};
-				class Item2
-				{
-					position[]={7111.772,9.3790512,5936.0142};
-					class Effects
-					{
-					};
-					showWP="NEVER";
-				};
-				class Item3
-				{
-					position[]={7108.6001,9.3768702,5935.8784};
-					class Effects
-					{
-					};
-					showWP="NEVER";
-				};
-				class Item4
-				{
-					position[]={7100.1509,8.4350214,5931.2534};
-					class Effects
-					{
-					};
-					showWP="NEVER";
-				};
-				class Item5
-				{
-					position[]={7093.9858,7.8321705,5930.7192};
-					class Effects
-					{
-					};
-					timeoutMin=5;
-					timeoutMid=10;
-					timeoutMax=15;
-					showWP="NEVER";
-				};
-				class Item6
-				{
-					position[]={7098.165,8.1789675,5931.1675};
-					class Effects
-					{
-					};
-					showWP="NEVER";
-				};
-				class Item7
-				{
-					position[]={7102.498,9.3216162,5932.3071};
-					class Effects
-					{
-					};
-					showWP="NEVER";
-				};
-				class Item8
-				{
-					position[]={7108.5898,9.4043064,5935.2607};
-					class Effects
-					{
-					};
-					showWP="NEVER";
-				};
-				class Item9
-				{
-					position[]={7113.6011,8.6265793,5936.1323};
-					class Effects
-					{
-					};
-					showWP="NEVER";
-				};
-				class Item10
-				{
-					position[]={7115.5884,8.4813499,5932.8447};
-					type="CYCLE";
-					class Effects
-					{
-					};
-					showWP="NEVER";
-				};
-			};
-		};
-		class Item5
-		{
-			side="EAST";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={7061.0171,12.590404,5957.6479};
-					azimut=-350.06201;
-					special="NONE";
-					id=6;
-					side="EAST";
-					vehicle="O_officer_F";
-					leader=1;
-					skill=0.60000002;
-					init="removeallweapons this; this addweapon ""hgun_rook40_f""; this addMagazine ""16Rnd_9x21_Mag""; this addMagazine ""16Rnd_9x21_Mag""; this addMagazine ""16Rnd_9x21_Mag""; removeHeadgear this; removeGoggles this; this setbehaviour ""safe""; this setcombatmode ""red""; removeVest this;";
-				};
-			};
-		};
-		class Item6
-		{
-			side="EAST";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={7110.6089,8.4736242,5994.6606};
-					azimut=-350.06232;
-					special="NONE";
-					id=7;
-					side="EAST";
-					vehicle="O_officer_F";
-					leader=1;
-					skill=0.60000002;
-					init="removeallweapons this; this addweapon ""hgun_rook40_f""; this addMagazine ""16Rnd_9x21_Mag""; this addMagazine ""16Rnd_9x21_Mag""; this addMagazine ""16Rnd_9x21_Mag""; removeHeadgear this; removeGoggles this; this setbehaviour ""safe""; this setcombatmode ""red""; removeVest this;";
-				};
-			};
-		};
-	};
-	class Vehicles
-	{
-		items=5;
-		class Item0
-		{
-			position[]={7021.478,1.6691443,5908.3657};
-			azimut=105.715;
-			special="NONE";
-			id=8;
-			side="EMPTY";
-			vehicle="B_Boat_Transport_01_F";
-			lock="LOCKED";
-			skill=0.60000002;
-			fuel=0;
-			ammo=0;
-		};
-		class Item1
-		{
-			position[]={7029.4175,5.4488769,5875.3037};
-			azimut=-18.759674;
-			id=9;
-			side="EMPTY";
-			vehicle="Land_BagBunker_Small_F";
-			skill=0.60000002;
-		};
-		class Item2
-		{
-			position[]={7111.1641,9.1913919,5931.5386};
-			azimut=0.1066618;
-			id=10;
-			side="EMPTY";
-			vehicle="Land_BagBunker_Small_F";
-			skill=0.60000002;
-		};
-		class Item3
-		{
-			position[]={7064.8091,12.470258,5957.1797};
-			azimut=-164.02837;
-			id=11;
-			side="EMPTY";
-			vehicle="Land_BagBunker_Small_F";
-			skill=0.60000002;
-		};
-		class Item4
-		{
-			position[]={7116.0342,8.5194817,5991.9438};
-			azimut=-147.20346;
-			id=12;
-			side="EMPTY";
-			vehicle="Land_BagBunker_Small_F";
-			skill=0.60000002;
 		};
 	};
 	class Markers
 	{
-		items=15;
+		items=7;
 		class Item0
 		{
-			position[]={7108.5366,8.7091036,5995.1934};
-			name="spawn1";
+			position[]={7035.8853,5.7681937,5884.979};
+			name="ammo1";
 			type="Empty";
-			colorName="ColorRed";
 		};
 		class Item1
 		{
-			position[]={7105.5322,9.4001245,5934.2725};
-			name="spawn2";
+			position[]={7061.8452,13.432052,5949.1919};
+			name="ammo2";
 			type="Empty";
-			colorName="ColorRed";
-			angle=34.004326;
 		};
 		class Item2
 		{
-			position[]={7061.6963,13.387156,5949.5107};
-			name="spawn3";
+			position[]={7110.2651,9.3315287,6022.2964};
+			name="ammo5";
 			type="Empty";
-			colorName="ColorRed";
 		};
 		class Item3
 		{
-			position[]={7030.0625,5.3823681,5873.1499};
-			name="spawn8";
+			position[]={7073.0659,4.715591,5915.3584};
+			name="ammo4";
 			type="Empty";
-			colorName="ColorRed";
 		};
 		class Item4
 		{
-			position[]={7070.4961,4.84163,5914.4272};
-			name="spawn7";
+			position[]={7106.5693,9.0160494,5938.7021};
+			name="ammo3";
 			type="Empty";
-			colorName="ColorRed";
 		};
 		class Item5
 		{
-			position[]={7110.562,8.4345179,6028.8496};
-			name="spawn4";
+			position[]={7094.7681,7.0200124,5975.4238};
+			name="ammo6";
 			type="Empty";
-			colorName="ColorRed";
 		};
 		class Item6
 		{
-			position[]={7128.4199,6.0620799,5982.2832};
-			name="spawn6";
+			position[]={7023.2632,2.0549059,5908.8511};
+			name="ammo7";
 			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item7
-		{
-			position[]={7063.4121,7.486228,5983.3701};
-			name="spawn5";
-			type="Empty";
-			colorName="ColorRed";
-		};
-		class Item8
-		{
-			position[]={6405.2988,-0.0028770566,5871.5498};
-			name="helispawn1";
-			type="Empty";
-			colorName="ColorBlack";
-		};
-		class Item9
-		{
-			position[]={7617.6528,-0.20285325,5323.5806};
-			name="helispawn2";
-			type="Empty";
-			colorName="ColorBlack";
-		};
-		class Item10
-		{
-			position[]={7405.7275,0.08230231,6447.6978};
-			name="helispawn3";
-			type="Empty";
-			colorName="ColorBlack";
-		};
-		class Item11
-		{
-			position[]={7026.8696,2.3098035,5907.2915};
-			name="ammospawn1";
-			type="Empty";
-		};
-		class Item12
-		{
-			position[]={7030.1987,5.5813684,5879.0483};
-			name="ammospawn2";
-			type="Empty";
-		};
-		class Item13
-		{
-			position[]={7087.4736,7.5813355,5929.1621};
-			name="ammospawn3";
-			type="Empty";
-		};
-		class Item14
-		{
-			position[]={7108.7559,8.6472073,6014.1973};
-			name="ammospawn4";
-			type="Empty";
-		};
-	};
-	class Sensors
-	{
-		items=2;
-		class Item0
-		{
-			position[]={7036.6235,2.2855492,5902.6987};
-			a=6;
-			b=6;
-			activationBy="WEST";
-			interruptable=1;
-			age="UNKNOWN";
-			class Effects
-			{
-			};
-			synchronizations[]={0};
-			syncId=1;
-		};
-		class Item1
-		{
-			position[]={7088.9907,7.674551,5935.3882};
-			a=10;
-			b=10;
-			interruptable=1;
-			age="UNKNOWN";
-			class Effects
-			{
-			};
 		};
 	};
 };

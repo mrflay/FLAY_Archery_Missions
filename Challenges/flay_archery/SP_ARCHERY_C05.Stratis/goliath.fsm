@@ -1,0 +1,261 @@
+/*%FSM<COMPILE "C:\BIS TOOLS 2.5.1\FSM Editor Personal Edition\scriptedFSM.cfg, Goliath">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,250,-50.000000,-225.000000,50.000000,-175.000000,0.000000,"init"};
+item1[] = {"Ready",4,218,-50.000000,-150.000000,50.000000,-100.000000,0.000000,"Ready"};
+item2[] = {"Search___Destroy",2,250,-50.000000,-75.000000,50.000000,-25.000000,0.000000,"Search & Destroy"};
+item3[] = {"Hit",4,218,100.000000,-75.000000,200.000000,-25.000000,0.000000,"Hit"};
+item4[] = {"Back_off",2,250,100.000000,200.000000,200.000000,250.000000,0.000000,"Back off"};
+item5[] = {"Timeout_Expired",4,218,25.000000,50.000000,125.000000,100.000000,0.000000,"Timeout" \n "Expired"};
+item6[] = {"Died",4,218,-200.000000,-75.000000,-100.000000,-25.000000,0.000000,"Died"};
+item7[] = {"End",1,250,-350.000000,-75.000000,-250.000000,-25.000000,0.000000,"End"};
+item8[] = {"Timeout_Expired",4,218,-125.000000,50.000000,-25.000000,100.000000,0.000000,"Timeout" \n "Expired"};
+item9[] = {"Unload_Transport",2,4346,-200.000000,200.000000,-100.000000,250.000000,0.000000,"Unload" \n "Transport"};
+item10[] = {"Transport_Unload",4,218,-50.000000,150.000000,50.000000,200.000000,0.000000,"Transport" \n "Unloaded"};
+item11[] = {"Timeout_Expired",4,218,-50.000000,250.000000,50.000000,300.000000,0.000000,"Timeout" \n "Expired"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,6};
+link4[] = {2,8};
+link5[] = {3,4};
+link6[] = {4,5};
+link7[] = {5,2};
+link8[] = {6,7};
+link9[] = {8,9};
+link10[] = {9,10};
+link11[] = {9,11};
+link12[] = {10,4};
+link13[] = {11,4};
+globals[] = {25.000000,1,0,0,0,640,480,1,28,6316128,1,-623.766968,623.765381,790.954285,-585.494202,929,1025,1};
+window[] = {2,-1,-1,-1,-1,1008,175,1696,175,3,947};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "Goliath";
+  class States
+  {
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"_backoffMarkers = [""FLAY_markerHeli1"", ""FLAY_markerHeli2"", ""FLAY_markerHeli3"", ""FLAY_markerHeli4""];" \n
+       "_helipadMarkers = [""helipad1"",""helipad2"",""helipad3"",""helipad4""];" \n
+       "_damage = damage goliath;" \n
+       "" \n
+       "_goliathGroup = group goliath;" \n
+       "" \n
+       "FLAY_EH_GoliathDamage = compile preprocessFile ""ev_goliath_damage.sqf"";" \n
+       "goliath addEventHandler [""handledamage"", ""_this call FLAY_EH_GoliathDamage;""];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Ready">*/
+        class Ready
+        {
+          priority = 0.000000;
+          to="Search___Destroy";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil { BIS_missionStarted }" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Search___Destroy">*/
+    class Search___Destroy
+    {
+      name = "Search___Destroy";
+      init = /*%FSM<STATEINIT""">*/"_goliathWaypoint = _goliathGroup addWaypoint [position david, 20];" \n
+       "_goliathWaypoint setWaypointBehaviour ""CARELESS"";" \n
+       "_goliathWaypoint setWaypointCombatMode ""YELLOW"";" \n
+       "_goliathWaypoint setWaypointType ""MOVE"";" \n
+       "" \n
+       "_searchTimeout = time + 40;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Died">*/
+        class Died
+        {
+          priority = 0.000000;
+          to="End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive goliath"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Timeout_Expired">*/
+        class Timeout_Expired
+        {
+          priority = 0.000000;
+          to="Unload_Transport";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _searchTimeout"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Hit">*/
+        class Hit
+        {
+          priority = 0.000000;
+          to="Back_off";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"damage goliath < _damage"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Back_off">*/
+    class Back_off
+    {
+      name = "Back_off";
+      init = /*%FSM<STATEINIT""">*/"_backoffMarker = _backoffmarkers call BIS_fnc_selectRandom;" \n
+       "_backoffPosition = getMarkerPos _backoffMarker;" \n
+       "" \n
+       "_goliathGroup = group goliath;" \n
+       "_goliathWaypoint = _goliathGroup addWaypoint [_backoffPosition, 1];" \n
+       "_goliathWaypoint setWaypointBehaviour ""CARELESS"";" \n
+       "_goliathWaypoint setWaypointCombatMode ""GREEN"";" \n
+       "_goliathWaypoint setWaypointType ""MOVE"";" \n
+       "_goliathGroup setCurrentWaypoint _goliathWaypoint;" \n
+       "" \n
+       "_goliathGroup setCombatMode ""YELLOW"";" \n
+       "_goliathGroup setBehaviour ""CARELESS"";" \n
+       "" \n
+       "_backoffTimeout = time + 30;" \n
+       "_damage = damage goliath;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Timeout_Expired">*/
+        class Timeout_Expired
+        {
+          priority = 0.000000;
+          to="Search___Destroy";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _backoffTimeout"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End">*/
+    class End
+    {
+      name = "End";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Unload_Transport">*/
+    class Unload_Transport
+    {
+      name = "Unload_Transport";
+      init = /*%FSM<STATEINIT""">*/"// add unit" \n
+       "_opforGroup = createGroup east;" \n
+       "_opforUnit = _opforGroup createUnit [""O_Soldier_F"",[0,0,0],[],0,""FORM""];" \n
+       "_opforUnit moveInCargo goliath;" \n
+       "" \n
+       "_opforGroup setCombatMode ""RED"";" \n
+       "_opforGroup setBehaviour ""AWARE"";" \n
+       "" \n
+       "_opforWaypoint =  _opforGroup addWaypoint [position player, 20];" \n
+       "_opforWaypoint setWaypointType ""SAD"";" \n
+       "_opforWaypoint setWaypointBehaviour ""AWARE"";" \n
+       "_opforWaypoint setWaypointCombatMode ""RED"";" \n
+       "_opforGroup setCurrentWaypoint _opforWaypoint;" \n
+       "" \n
+       "// gear" \n
+       "_weapon = primaryWeapon _opforUnit;" \n
+       "_magazine = (primaryWeaponMagazine _opforUnit) select 0;" \n
+       "" \n
+       "_headgear = headGear _opforUnit;" \n
+       "_uniform = uniform _opforUnit;" \n
+       "_vest = vest _opforUnit;" \n
+       "" \n
+       "removeAllWeapons _opforUnit;" \n
+       "removeAllItems _opforUnit;" \n
+       "clearAllItemsFromBackpack _opforUnit;" \n
+       "removeAllAssignedItems _opforUnit;" \n
+       "removeUniform _opforUnit;" \n
+       "removeVest _opforUnit;" \n
+       "	" \n
+       "_opforUnit addUniform _uniform;" \n
+       "_opforUnit addVest _vest;			" \n
+       "_opforUnit addHeadgear _headgear;" \n
+       "" \n
+       "_opforUnit addMagazine _magazine;" \n
+       "_opforUnit addMagazine _magazine;" \n
+       "_opforUnit addMagazine _magazine;" \n
+       "_opforUnit addWeapon _weapon;" \n
+       "" \n
+       "// loot" \n
+       "_opforUnit addMagazine ""flay_1Rnd_ExplosiveArrow"";" \n
+       "" \n
+       "_opforUnit addEventHandler [""killed"", ""_unit = _this select 0; _unit removeWeapon (primaryWeapon _unit); ""];" \n
+       "" \n
+       "// select landing zone" \n
+       "_helipads = (position goliath) nearObjects [""Land_HelipadEmpty_F"", 500];" \n
+       "if (count _helipads > 0) then {" \n
+       "      _helipad = _helipads call BIS_fnc_selectRandom;" \n
+       "	_goliathWaypoint1 = _goliathGroup addWaypoint [position _helipad, 20];" \n
+       "	_goliathWaypoint1 setWaypointType ""MOVE"";" \n
+       "	_goliathWaypoint1 setWaypointBehaviour ""CARELESS"";" \n
+       "	_goliathWaypoint1 setWaypointCombatMode ""YELLOW"";" \n
+       "	_goliathWaypoint2 = _goliathGroup addWaypoint [position _helipad, 20];" \n
+       "	_goliathWaypoint2 setWaypointType ""TR UNLOAD"";" \n
+       "	_goliathWaypoint2 setWaypointBehaviour ""CARELESS"";" \n
+       "	_goliathWaypoint2 setWaypointCombatMode ""YELLOW"";" \n
+       "     _goliathGroup setCurrentWaypoint _goliathWaypoint1;" \n
+       "} else {" \n
+       "	// goliath globalChat ""helipad not found"";" \n
+       "};" \n
+       "" \n
+       "_unloadTimeout = time + 60;" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Timeout_Expired">*/
+        class Timeout_Expired
+        {
+          priority = 0.000000;
+          to="Back_off";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _unloadTimeout"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Transport_Unload">*/
+        class Transport_Unload
+        {
+          priority = 0.000000;
+          to="Back_off";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"vehicle _opforUnit != goliath"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="init";
+  finalStates[] =
+  {
+    "End",
+  };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,216 @@
+/*%FSM<COMPILE "C:\BIS TOOLS 2.5.1\FSM Editor Personal Edition\scriptedFSM.cfg, Archery Challenge 4">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Locate_Weapon",2,250,-75.000000,-175.000000,25.000000,-125.000000,0.000000,"Locate" \n "Weapon"};
+item1[] = {"Destroy_Helicopt",2,4346,-75.000000,-25.000000,25.000000,25.000000,0.000000,"Destroy" \n "Helicopter"};
+item2[] = {"Helicopter_Destr",4,218,-75.000000,75.000000,25.000000,125.000000,0.000000,"Helicopter" \n "Destroyed"};
+item3[] = {"Helicopter_Crash",4,218,-250.000000,-25.000000,-150.000000,25.000000,0.000000,"Helicopter" \n "Crashed"};
+item4[] = {"",7,210,-204.000000,-154.000000,-196.000000,-146.000000,0.000000,""};
+item5[] = {"END_Failure",1,250,100.000000,175.000000,200.000000,225.000000,0.000000,"END" \n "Failure"};
+item6[] = {"Player_Killed",4,218,100.000000,-25.000000,200.000000,25.000000,0.000000,"Player" \n "Killed"};
+item7[] = {"",7,210,146.000000,-154.000015,154.000000,-146.000000,0.000000,""};
+item8[] = {"END_Challenge",1,250,-250.000000,175.000000,-150.000000,225.000000,0.000000,"END" \n "Challenge"};
+item9[] = {"Weapon_Found",4,218,-75.000000,-100.000000,25.000000,-50.000000,0.000000,"Weapon" \n "Found"};
+item10[] = {"END_Success",1,250,-75.000000,175.000000,25.000000,225.000000,0.000000,"END" \n "Success"};
+item11[] = {"init",0,250,-75.000000,-325.000000,25.000000,-275.000000,0.000000,"init"};
+item12[] = {"Ready",4,218,-75.000000,-250.000000,25.000000,-200.000000,0.000000,"Ready"};
+link0[] = {0,4};
+link1[] = {0,7};
+link2[] = {0,9};
+link3[] = {1,2};
+link4[] = {1,6};
+link5[] = {2,10};
+link6[] = {3,8};
+link7[] = {4,3};
+link8[] = {6,5};
+link9[] = {7,6};
+link10[] = {9,1};
+link11[] = {11,12};
+link12[] = {12,0};
+globals[] = {25.000000,1,0,0,0,640,480,1,222,6316128,1,-453.570465,600.302917,311.342072,-498.928925,809,622,1};
+window[] = {0,-1,-1,-1,-1,1017,250,1781,250,1,827};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "Archery Challenge 4";
+  class States
+  {
+    /*%FSM<STATE "Locate_Weapon">*/
+    class Locate_Weapon
+    {
+      name = "Locate_Weapon";
+      init = /*%FSM<STATEINIT""">*/"// ===========" \n
+       "// TASKS" \n
+       "// ===========" \n
+       "" \n
+       "[] spawn {" \n
+       "	sleep 3;" \n
+       "	[""FLAY_LocateWeapon""] call BIS_fnc_missionTasks;" \n
+       "};" \n
+       "" \n
+       "execFSM ""goliath.fsm"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Helicopter_Crash">*/
+        class Helicopter_Crash
+        {
+          priority = 0.000000;
+          to="END_Challenge";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive goliath"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Player_Killed">*/
+        class Player_Killed
+        {
+          priority = 0.000000;
+          to="END_Failure";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive player"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Weapon_Found">*/
+        class Weapon_Found
+        {
+          priority = 0.000000;
+          to="Destroy_Helicopt";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(currentWeapon player) != """""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Destroy_Helicopt">*/
+    class Destroy_Helicopt
+    {
+      name = "Destroy_Helicopt";
+      init = /*%FSM<STATEINIT""">*/"// ===========" \n
+       "// TASKS" \n
+       "// ===========" \n
+       "" \n
+       "[] spawn {" \n
+       "	sleep 5;" \n
+       "	[""FLAY_LocateWeapon"", ""SUCCEEDED""] call BIS_fnc_missionTasks;" \n
+       "	[""FLAY_DestroyHelicopter""] call BIS_fnc_missionTasks;" \n
+       "	sleep 10;" \n
+       "	hint ""Kill the infantry units to get hold of explosive arrows."";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Player_Killed">*/
+        class Player_Killed
+        {
+          priority = 0.000000;
+          to="END_Failure";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive player"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Helicopter_Destr">*/
+        class Helicopter_Destr
+        {
+          priority = 0.000000;
+          to="END_Success";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive goliath"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "END_Failure">*/
+    class END_Failure
+    {
+      name = "END_Failure";
+      init = /*%FSM<STATEINIT""">*/"// ============" \n
+       "// END MISSION" \n
+       "// ============" \n
+       "" \n
+       "[""EndFailure"", false, true] call BIS_fnc_endMission;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "END_Challenge">*/
+    class END_Challenge
+    {
+      name = "END_Challenge";
+      init = /*%FSM<STATEINIT""">*/"// ============" \n
+       "// END MISSION" \n
+       "// ============" \n
+       "" \n
+       "[] spawn {" \n
+       "	sleep 5;" \n
+       "	[""FLAY_DestroyHelicopter"", ""SUCCEEDED""] call BIS_fnc_missionTasks;" \n
+       "	sleep 5;" \n
+       "	[""EndSuccess"", true, true] call BIS_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "END_Success">*/
+    class END_Success
+    {
+      name = "END_Success";
+      init = /*%FSM<STATEINIT""">*/"// ============" \n
+       "// END MISSION" \n
+       "// ============" \n
+       "" \n
+       "[] spawn {" \n
+       "	sleep 5;" \n
+       "	[""FLAY_DestroyHelicopter"", ""SUCCEEDED""] call BIS_fnc_missionTasks;" \n
+       "	sleep 5;" \n
+       "	[""EndSuccess"", true, true] call BIS_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"execFSM ""loot.fsm"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Ready">*/
+        class Ready
+        {
+          priority = 0.000000;
+          to="Locate_Weapon";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil { BIS_missionStarted }" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="init";
+  finalStates[] =
+  {
+    "END_Failure",
+    "END_Challenge",
+    "END_Success",
+  };
+};
+/*%FSM</COMPILE>*/

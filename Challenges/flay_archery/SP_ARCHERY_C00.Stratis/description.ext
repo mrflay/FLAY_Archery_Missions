@@ -1,21 +1,19 @@
 dev 				= "mrflay";
 author				= "mrflay";
-briefingName 		= "Training";
-onLoadName 			= "Training: Kamino";
-onLoadMission 		= "Training: Kamino";
+briefingName 		= "Practice";
+onLoadName 			= "Practice: Kamino";
+onLoadMission 		= "Practice your archery skills in this Training Session near Kamino.";
 onLoadMissionTime 	= 0;
-overviewText 		= "Practice your archery skills in this Training Session around Kamino Lighthouse.";
-overviewTextLocked 	= "";
+overviewText 		= "Practice your archery skills in this Training Session near Kamino.";
+overviewTextLocked 	= "Coming Soon (TM)";
 overviewPicture 	= "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C00.Stratis\overview_co.paa";
 doneKeys[] 			= {"SP_ARCHERY_C00.Stratis_done"};
 stage 				= "Red";
 name                = "name";
 loadScreen          = "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C00.Stratis\overview_co.paa";
 
-diagRadio = 1;
-diagHit = 1;
-diagKey = 1;
-diagAAR = 1;
+keys[]              = {"FLAY_INCOMPLETE"};
+keysLimit           = 1;
 
 class CfgDebriefing
 {

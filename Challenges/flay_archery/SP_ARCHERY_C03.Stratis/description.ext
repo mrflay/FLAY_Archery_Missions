@@ -1,53 +1,31 @@
 dev 				= "mrflay";
 author				= "mrflay";
-briefingName 		= "Pythos Hoards: Overkill";
-onLoadName 			= "Pythos Hoards: Overkill";
-onLoadMission 		= "Pythos Hoards: Overkill";
+briefingName 		= "Stratis Cup: Kamino";
+onLoadName 			= "Stratis Cup: Kamino";
+onLoadMission 		= "Prove your skills with the Compound Bow in this Field Competition event hosted in the village of Kamino.";
 onLoadMissionTime 	= 0;
-overviewText 		= "Free the captured helicopter crew and eliminate the hoards of enemy soldiers occupying the island of Pythos.";
-overviewTextLocked 	= "";
+overviewText 		= "Prove your skills with the Compound Bow in this Field Competition event hosted in the village of Kamino.";
+overviewTextLocked 	= "Coming Soon (TM)";
 overviewPicture 	= "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C03.Stratis\overview_co.paa";
 doneKeys[] 			= {"SP_ARCHERY_C03.Stratis_done"};
 loadScreen          = "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C03.Stratis\overview_co.paa";
-briefing            = 1;
-debriefing          = 1;
+
+keys[]              = {"FLAY_INCOMPLETE"};
+keysLimit           = 1;
 
 class CfgDebriefing
 {
-	class EndFailure
+	class End1
 	{
-        title = "Challenge Failed"; //TODO: Localize
+        title = "Challenge Ended";
         subtitle = "";
-		description = "";
-        //description = "You have failed!"; //TODO: Localize
-		pictureBackground = "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C03.Stratis\failure_co.paa";
-	};
-	class EndSuccess
-	{
-        title = "Challenge Completed"; //TODO: Localize
-		subtitle = "";
-		description = "";
-        //description = "You have survived!"; //TODO: Localize
-		pictureBackground = "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C03.Stratis\success_co.paa";	
-	};
-};
+        description = "";
 
-class CfgIdentities
-{
-	class Doug_Masters 
-	{
-		name="Doug Masters";
-		face="Face20";
-		glasses="None";
-		speaker="Dan";
-		pitch=1.1;	
 	};
-	class Akir_Nakesh
+	class End2 
 	{
-		name="Akir Nakesh";
-		face="Face20";
-		glasses="None";
-		speaker="Dan";
-		pitch=1.1;
+        title = "Challenge Failed";
+        subtitle = "";
+        description = ""; 
 	};
 };

@@ -1,0 +1,271 @@
+/*%FSM<COMPILE "C:\BIS TOOLS 2.5.1\FSM Editor Personal Edition\scriptedFSM.cfg, Archery Challenge 3">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Eliminate_Wave",2,4346,100.000000,-150.000000,200.000000,-100.000000,0.000000,"Eliminate" \n "Wave"};
+item1[] = {"Wave_Spawned",4,218,-25.000000,-150.000000,75.000000,-100.000000,0.000000,"Wave" \n "Spawned"};
+item2[] = {"Spawn_Wave",2,250,-150.000000,-150.000000,-50.000000,-100.000000,0.000000,"Spawn" \n "Wave"};
+item3[] = {"No_More_Waves",4,218,-150.000000,-75.000000,-50.000000,-25.000000,0.000000,"No More" \n "Waves"};
+item4[] = {"Prepare_Wave",2,250,-25.000000,-300.000000,75.000000,-250.000000,0.000000,"Prepare" \n "Wave"};
+item5[] = {"Wave_Ready",4,218,-150.000000,-300.000000,-50.000000,-250.000000,0.000000,"Wave" \n "Ready"};
+item6[] = {"Wave_Eliminated",4,218,100.000000,-300.000000,200.000000,-250.000000,0.000000,"Wave" \n "Eliminated"};
+item7[] = {"END_Success",1,250,-150.000000,0.000000,-50.000000,50.000000,0.000000,"END" \n "Success"};
+item8[] = {"init",0,250,-25.000000,-450.000000,75.000000,-400.000000,0.000000,"init"};
+item9[] = {"Ready",4,218,-25.000000,-375.000000,75.000000,-325.000000,0.000000,"Ready"};
+item10[] = {"Timeout_Expired",4,218,-25.000000,-225.000000,75.000000,-175.000000,0.000000,"Timeout" \n "Expired"};
+link0[] = {0,6};
+link1[] = {0,10};
+link2[] = {1,0};
+link3[] = {2,1};
+link4[] = {2,3};
+link5[] = {3,7};
+link6[] = {4,5};
+link7[] = {5,2};
+link8[] = {6,4};
+link9[] = {8,9};
+link10[] = {9,4};
+link11[] = {10,4};
+globals[] = {25.000000,1,0,0,0,640,480,1,234,6316128,1,-387.080566,350.919983,242.189911,-490.095245,1033,1025,1};
+window[] = {2,-1,-1,-1,-1,867,100,1631,100,3,1051};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "Archery Challenge 3";
+  class States
+  {
+    /*%FSM<STATE "Eliminate_Wave">*/
+    class Eliminate_Wave
+    {
+      name = "Eliminate_Wave";
+      init = /*%FSM<STATEINIT""">*/"if (missionNamespace getVariable [""FLAY_debug"", false]) then {" \n
+       "	player globalchat ""eliminate wave"";" \n
+       "};" \n
+       "" \n
+       "// alive check" \n
+       "_opforGroup spawn {" \n
+       "	_alive = true;" \n
+       "	while { _alive } do {" \n
+       "		sleep 5;" \n
+       "		_alive = false;" \n
+       "		{  _alive = _alive || (alive _x); } forEach (units _this);" \n
+       "	};" \n
+       "	FLAY_opforPresent = false;" \n
+       "	_score = missionNamespace getVariable [""flay.wave.score"", 0];" \n
+       "	_score = _score + 1000; // wave bonus" \n
+       "	missionNamespace setVariable [""flay.wave.score"", _score];" \n
+       "	_score call flay_fnc_hintscore;" \n
+       "};" \n
+       "" \n
+       "_eliminateTimeout = time + 120;" \n
+       "" \n
+       "" \n
+       "" \n
+       "[_wave,_maxWaves,_eliminateTimeout] spawn {" \n
+       "	//waitUntil { _eliminateTimeout - time < 60 };" \n
+       "	_wave=_this select 0;" \n
+       "	_maxWaves = _this select 1;" \n
+       "	_timeout = _this select 2;" \n
+       "	_t = round (_timeout - time);" \n
+       "	while { time < _timeout } do {" \n
+       "		(format [""Wave: %1 of %2  (Time: %3)"",_wave,_maxWaves,_t]) call FLAY_fnc_hintWave;" \n
+       "		_t = _t - 1;" \n
+       "		sleep 1;" \n
+       "	};" \n
+       "}"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Timeout_Expired">*/
+        class Timeout_Expired
+        {
+          priority = 0.000000;
+          to="Prepare_Wave";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _eliminateTimeout"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Wave_Eliminated">*/
+        class Wave_Eliminated
+        {
+          priority = 0.000000;
+          to="Prepare_Wave";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!FLAY_opforPresent"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Spawn_Wave">*/
+    class Spawn_Wave
+    {
+      name = "Spawn_Wave";
+      init = /*%FSM<STATEINIT""">*/"if (missionNamespace getVariable [""FLAY_debug"", false]) then {" \n
+       "	player globalchat ""spawn wave"";" \n
+       "};" \n
+       "" \n
+       "_wave = _wave + 1;" \n
+       "(format [""Wave: %1 of %2"",_wave,_maxWaves]) call FLAY_fnc_hintWave;" \n
+       "" \n
+       "deleteGroup _opforGroup;" \n
+       "_opforGroup = createGroup east;" \n
+       "_spawned = [_opforGroup, (_wave - 1), _spawnMarkers] call FLAY_fnc_SpawnWave;" \n
+       "if (_spawned) then {" \n
+       "	_opforWaypoint = _opforGroup addWaypoint [position player, 20];" \n
+       "	_opforWaypoint setWaypointType ""SAD"";" \n
+       "	_opforWaypoint setWaypointBehaviour ""AWARE"";" \n
+       "	_opforWaypoint setWaypointCombatMode ""RED"";" \n
+       "	_opforGroup setCurrentWaypoint _opforWaypoint;" \n
+       "	_opforGroup setBehaviour ""AWARE"";" \n
+       "	_opforGroup setCombatMode ""RED"";" \n
+       "	FLAY_opforPresent = true;" \n
+       "};" \n
+       "" \n
+       "_spawnTimeout = time + 5;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "No_More_Waves">*/
+        class No_More_Waves
+        {
+          priority = 0.000000;
+          to="END_Success";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!FLAY_opforPresent"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Wave_Spawned">*/
+        class Wave_Spawned
+        {
+          priority = 0.000000;
+          to="Eliminate_Wave";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"FLAY_opforPresent && time > _spawnTimeout"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Prepare_Wave">*/
+    class Prepare_Wave
+    {
+      name = "Prepare_Wave";
+      init = /*%FSM<STATEINIT""">*/"if (missionNamespace getVariable [""FLAY_debug"", false]) then {" \n
+       "	player globalchat ""prepare wave"";" \n
+       "};" \n
+       "" \n
+       "_prepareTimeout = time + 10;" \n
+       "" \n
+       "if (_wave > 0) then {" \n
+       "" \n
+       "	//_alive = false;" \n
+       "	//_killed = {  _alive = _alive || (alive _x); } forEach (units _opforGroup);" \n
+       "" \n
+       "	// wave wasn't eliminated in time" \n
+       "	if (time > _eliminateTimeout) then {" \n
+       "		_taskId = player call BIS_fnc_taskCurrent;" \n
+       "		[_taskId, ""failed"",true] call BIS_fnc_taskSetState;	" \n
+       "	} else {" \n
+       "		_taskId = player call BIS_fnc_taskCurrent;" \n
+       "		[_taskId, ""succeeded"",true] call BIS_fnc_taskSetState;	" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "_prepareTimeout spawn {" \n
+       "	_t = 10;" \n
+       "	while { time < _this } do {" \n
+       "		(format [""Next wave in: %1"", _t]) call FLAY_fnc_hintWave;" \n
+       "		_t = _t - 1;" \n
+       "		sleep 1;" \n
+       "	};" \n
+       "}"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Wave_Ready">*/
+        class Wave_Ready
+        {
+          priority = 0.000000;
+          to="Spawn_Wave";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _prepareTimeout"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "END_Success">*/
+    class END_Success
+    {
+      name = "END_Success";
+      init = /*%FSM<STATEINIT""">*/"// ============" \n
+       "// END MISSION" \n
+       "// ============" \n
+       "" \n
+       "_wave spawn {" \n
+       "	sleep 5;" \n
+       "	_wave = _this;" \n
+       "	_taskId = format [""FLAY_Wave%1"", _wave];" \n
+       "	[_taskId, ""SUCCEEDED""] call BIS_fnc_missionTasks;" \n
+       "	sleep 5;" \n
+       "	[""EndSuccess"", true, true] call BIS_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"FLAY_fnc_SpawnWave = compile preprocessFile ""fn_spawnwave.sqf"";" \n
+       "FLAY_fnc_SpawnUnit = compile preprocessFile ""fn_spawnunit.sqf"";" \n
+       "FLAY_fnc_hintWave = compile preprocessFile ""fn_hintwave.sqf"";" \n
+       "FLAY_fnc_hintScore = compile preprocessFile ""fn_hintscore.sqf"";" \n
+       "" \n
+       "_wave = 0;" \n
+       "_maxWaves = count (getArray(missionConfigFile >> ""CfgWaves"" >> ""waves""));" \n
+       "" \n
+       "_ammoMarkers = [""ammo1"",""ammo2"",""ammo3"",""ammo4"",""ammo5"",""ammo6"",""ammo7""];" \n
+       "_spawnMarkers = [""ammo1"",""ammo2"",""ammo3"",""ammo4""];" \n
+       "" \n
+       "_opforGroup = createGroup east;" \n
+       "" \n
+       "FLAY_opforPresent = false;" \n
+       "" \n
+       "_spawnTimeout = 0;" \n
+       "_eliminateTimeout = 0;" \n
+       "_prepareTimeout = 0;" \n
+       "" \n
+       "execFSM ""loot.fsm"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Ready">*/
+        class Ready
+        {
+          priority = 0.000000;
+          to="Prepare_Wave";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil { BIS_missionStarted }" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="init";
+  finalStates[] =
+  {
+    "END_Success",
+  };
+};
+/*%FSM</COMPILE>*/

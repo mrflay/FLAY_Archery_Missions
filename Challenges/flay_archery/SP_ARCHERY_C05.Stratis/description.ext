@@ -1,0 +1,29 @@
+dev 				= "mrflay";
+author				= "mrflay";
+briefingName 		= "Pythos Arena: Goliath";
+onLoadName 			= "Pythos Arena: Goliath";
+onLoadMission 		= "Face off Man against Beast. Unarmed. Find the weapon stash and take out the enemy gunship before it blows you to pieces.";
+onLoadMissionTime 	= 0;
+overviewText 		= "Face off Man against Beast. Unarmed. Find the weapon stash and take out the enemy gunship before it blows you to pieces.";
+overviewTextLocked 	= "";
+overviewPicture 	= "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C05.Stratis\overview_co.paa";
+doneKeys[] 			= {"SP_ARCHERY_C05.Stratis_done"};
+loadScreen          = "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C05.Stratis\overview_co.paa";
+
+class CfgDebriefing
+{
+	class EndFailure
+	{
+        title = "Challenge Failed";
+        subtitle = "";
+		description = "";
+		pictureBackground = "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C04.Stratis\failure_co.paa";
+	};
+	class EndSuccess
+	{
+        title = "Challenge Completed";
+		subtitle = "";
+		description = "";
+		pictureBackground = "\FLAY\FLAY_Archery_Missions\Challenges\flay_archery\SP_ARCHERY_C04.Stratis\success_co.paa";	
+	};
+};

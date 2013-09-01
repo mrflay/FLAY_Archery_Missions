@@ -5,11 +5,11 @@ case "FLAY_Infiltrate" : {
 			_taskID,
 			[
 				"Reach the infiltration point on Pythos island.",
-				"Infiltrate Pythos island",
+				"Infiltrate",
 				"Infiltrate"
 			],
 			_this,
-			true
+			false
 		] call BIS_fnc_taskCreate;
 	} else {
 		[_taskID, _this] call BIS_fnc_taskSetState;
@@ -23,11 +23,29 @@ case "FLAY_Rescue" : {
 			_taskID,
 			[
 				"Locate and free the captured helicopter crew.",
-				"Rescue helicopter crew",
+				"Rescue",
 				"Crash site"
 			],
 			_this,
-			true
+			false
+		] call BIS_fnc_taskCreate;
+	} else {
+		[_taskID, _this] call BIS_fnc_taskSetState;
+	};
+};
+
+case "FLAY_Destroy" : {
+	if (_taskState == "") then {
+		[
+			player,
+			_taskID,
+			[
+				"Destroy the downed helicopter.",
+				"Destroy",
+				"Helicopter"
+			],
+			_this,
+			false
 		] call BIS_fnc_taskCreate;
 	} else {
 		[_taskID, _this] call BIS_fnc_taskSetState;
@@ -41,11 +59,11 @@ case "FLAY_Extract" : {
 			_taskID,
 			[
 				"Escort the crew to the extraction point.",
-				"Extraction",
+				"Extract",
 				"Extraction"
 			],
 			_this,
-			true
+			false
 		] call BIS_fnc_taskCreate;
 	} else {
 		[_taskID, _this] call BIS_fnc_taskSetState;
@@ -63,7 +81,7 @@ case "FLAY_Rendezvous" : {
 				 "Rendezvous"
 			],
 			_this,
-			true
+			false
 		] call BIS_fnc_taskCreate;
 	} else {
 		[_taskID, _this] call BIS_fnc_taskSetState;
