@@ -65,7 +65,9 @@ removeHeadgear player;
 removeBackpack player;
 removeVest player;
 
-player unassignItem "NVGoggles";
-player removeItem "NVGoggles";
+player unassignItem "NVGoggles_INDEP";
+player removeItem "NVGoggles_INDEP";
 
 group player setGroupId ["RIP"];
+
+enableSaving [false, false];

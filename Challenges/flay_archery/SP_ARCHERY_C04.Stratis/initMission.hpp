@@ -64,4 +64,4 @@ player removeItem "NVGoggles_INDEP";
 
 100 cutRsc ["FLAY_RscWaveHUD", "PLAIN", 1];
 
-
+enableSaving [false, false];
